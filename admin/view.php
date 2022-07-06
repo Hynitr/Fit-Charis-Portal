@@ -43,16 +43,16 @@ $row = mysqli_fetch_array($res);
                         <div class="form-group">
                             <label for="exampleInputPassword1">Select a Class .:</label>
                             <select name="ressbj" id="ressbj" class="form-control">
-                                <option name="class" id="ressbj">Reception</option>
-                                <option name="class" id="ressbj">Transition</option>
-                                <option name="class" id="ressbj">Kindergarten</option>
+                                <option name="class" id="ressbj">Null</option>
                                 <option name="class" id="ressbj">Nursery 1</option>
                                 <option name="class" id="ressbj">Nursery 2</option>
-                                <option name="class" id="ressbj">Grade 1</option>
-                                <option name="class" id="ressbj">Grade 2</option>
-                                <option name="class" id="ressbj">Grade 3</option>
-                                <option name="class" id="ressbj">Grade 4</option>
-                                <option name="class" id="ressbj">Grade 5</option>
+                                <option name="class" id="ressbj">KG 1</option>
+                                <option name="class" id="ressbj">KG 2</option>
+                                <option name="class" id="ressbj">Year 1</option>
+                                <option name="class" id="ressbj">Year 2</option>
+                                <option name="class" id="ressbj">Year 3</option>
+                                <option name="class" id="ressbj">Year 4</option>
+                                <option name="class" id="ressbj">Year 5</option>
                                 <option name="class" id="ressbj">J.S.S 1</option>
                                 <option name="class" id="ressbj">J.S.S 2</option>
                                 <option name="class" id="ressbj">J.S.S 3</option>
