@@ -90,7 +90,7 @@ $q = mysqli_fetch_array($w);
                                             <td><?php echo $row['Telephone2'] ?></td>
                                             <td><?php echo $row['Gender'] ?></td>
                                             <?php echo '
-                                                    <td ><a href="./more?id='.$row['AdminID'].'">View Full Profile</a></td>';
+                                                    <td ><a target="_blank" href="./more?id='.$row['AdminID'].'">View Full Profile</a></td>';
                                                     ?>
 
                                         </tr>
