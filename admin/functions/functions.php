@@ -330,7 +330,7 @@ function uenrol($surname, $firstname, $lastname, $date, $month, $year, $gender, 
 
 	
 
-	$sql2 = "UPDATE students SET  `SurName` = '$sname', `Middle Name` = '$fname', `Last Name` = '$lname', `cbk` =  '$rpwor' ='$pwor', `suF` = '$pwor', `Date` = '$day', `Month` = '$mont', `Year`= '$yea', `Gender`='$gend', `schlst` = '$schl', `parent` = '$paren', `relation`= '$rel', `occupation` = '$occ', `Telephone1`= '$dnu', `Address 1` = '$ad', `Telephone2` = '$mnu', `Class` = '$cls', `Department`= '$dep', `Active` = '0', `SchF` = '$sh', `AcF` =  '$ac', `fee` = '$feestat' WHERE `AdminID` = '$data'";
+$sql2 = "UPDATE students SET  `SurName` = '$sname', `Middle Name` = '$fname', `Last Name` = '$lname', `cbk` =  '$rpwor' ='$pwor', `suF` = '$pwor', `Date` = '$day', `Month` = '$mont', `Year`= '$yea', `Gender`='$gend', `schlst` = '$schl', `parent` = '$paren', `relation`= '$rel', `occupation` = '$occ', `Telephone1`= '$dnu', `Address 1` = '$ad', `Telephone2` = '$mnu', `Class` = '$cls', `Department`= '$dep', `Active` = '0', `SchF` = '$sh', `AcF` =  '$ac' WHERE `AdminID` = '$data'";
 $rews = query($sql2);
 
 $_SESSION['dcer'] = $data;
