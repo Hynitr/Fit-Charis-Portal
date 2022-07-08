@@ -309,7 +309,7 @@ if (!isset($_GET['id'])) {
                                 </div>
                                 <!-- /.form group -->
 
-                                <div class="form-group">
+                                <!--<div class="form-group">
                                     <label>Fee Status.:</label>
                                     <select name="feestat" id="feestat" value="<?php echo $row['fee'] ?>"
                                         class="custom-select">
@@ -318,7 +318,7 @@ if (!isset($_GET['id'])) {
                                         <option name="feestat" id="feestat">unpaid</option>
 
                                     </select>
-                                </div>
+                                </div>-->
 
                             </div>
                             <input type="text" id="idn" value="<?php echo $data ?>" hidden>
