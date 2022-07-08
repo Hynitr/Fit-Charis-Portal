@@ -63,7 +63,6 @@ $q = mysqli_fetch_array($w);
                                             <th>Admission No. </th>
                                             <th>First Name </th>
                                             <th>Last Name</th>
-                                            <th>Fee Status </th>
                                             <th>Dad No. </th>
                                             <th>Mum No. </th>
                                             <th>Gender </th>
@@ -81,7 +80,6 @@ $q = mysqli_fetch_array($w);
                                             <td><?php echo $row['AdminID'] ?></td>
                                             <td><?php echo $row['SurName'] ?></td>
                                             <td><?php echo $row['Middle Name'] ?></td>
-                                            <td><?php echo $row['fee'] ?></td>
                                             <td><?php echo $row['Telephone1'] ?></td>
                                             <td><?php echo $row['Telephone2'] ?></td>
                                             <td><?php echo $row['Gender'] ?></td>
