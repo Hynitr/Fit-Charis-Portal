@@ -80,10 +80,10 @@ $rower = mysqli_fetch_array($res);
                         <thead>
                             <tr class="text-center">
                                 <th>Subject</th>
-                                <th>Continuous <br /> Assessment</th>
-                                <th>Project</th>
                                 <th>Classwork</th>
+                                <th>Continuous <br /> Assessment</th>
                                 <th>Mid-Term</th>
+                                <th>Project</th>
                                 <th>Exam</th>
                                 <th>Total</th>
                                 <th>Grade</th>
@@ -167,18 +167,6 @@ $rower = mysqli_fetch_array($res);
 
                         <div class="form-group">
                             <div class="row">
-                                <div class="form-group col-md-3">
-                                    <label for="exampleInputEmail1">Continuous Assessment(10):</label>
-                                    <input type="number" name="date" id="test" placeholder="Continuous Assessment(10)"
-                                        class="form-control">
-                                </div>
-                                <!-- /.input group -->
-                                <div class="form-group col-md-2">
-                                    <label for="exampleInputEmail1">Project(10):</label>
-                                    <input type="number" name="month" id="ass" placeholder="Project(10)"
-                                        class="form-control">
-                                </div>
-
 
                                 <!-- /.input group -->
                                 <div class="form-group col-md-2">
@@ -186,7 +174,11 @@ $rower = mysqli_fetch_array($res);
                                     <input type="number" name="year" id="exc" placeholder="Classwork(10)"
                                         class="form-control">
                                 </div>
-
+                                <div class="form-group col-md-3">
+                                    <label for="exampleInputEmail1">Continuous Assessment(10):</label>
+                                    <input type="number" name="date" id="test" placeholder="Continuous Assessment(10)"
+                                        class="form-control">
+                                </div>
                                 <!-- /.input group -->
                                 <div class="form-group col-md-3">
                                     <label for="exampleInputEmail1">Mid-Term(10):</label>
@@ -194,6 +186,12 @@ $rower = mysqli_fetch_array($res);
                                         class="form-control">
                                 </div>
 
+                                <!-- /.input group -->
+                                <div class="form-group col-md-2">
+                                    <label for="exampleInputEmail1">Project(10):</label>
+                                    <input type="number" name="month" id="ass" placeholder="Project(10)"
+                                        class="form-control">
+                                </div>
                                 <!-- /.input group -->
                                 <div class="form-group col-md-2">
                                     <label for="exampleInputEmail1"> Exam(60) .:</label>
