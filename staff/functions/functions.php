@@ -621,7 +621,7 @@ $result = query($sql2);
 $_SESSION['doneresll'] = "Result submitted successfully";
 
 echo 'Loading.. Please wait';	
-//echo '<script>window.location.href = "./frn"</script>';
+echo '<script>window.location.href = "./frn"</script>';
 }
 }
 
