@@ -19,7 +19,7 @@ $(document).ready(function () {
     var ass = $("#ass").val();
     var exc = $("#exc").val();
     var exam = $("#exam").val();
-    var position = $("#position").val();
+    var mid = $("#mid").val();
     var name = $("#name").val();
     var admis = $("#admis").val();
     var cla = $("#cla").val();
@@ -30,37 +30,43 @@ $(document).ready(function () {
       $(toastr.error("Subject can`t be empty"));
     } else {
       if (test == null || test == "") {
-        $(toastr.error("Kindly input CAT 1 Score"));
+        $(toastr.error("Kindly input Continuous Assessment Score"));
       } else {
         if (test > 10) {
-          $(toastr.error("CAT 1 score can`t be greater than 10"));
+          $(toastr.error("Continuous Assessment score can`t be greater than 10"));
         } else {
           if (ass == null || ass == "") {
-            $(toastr.error("Kindly input CAT 2 score"));
+            $(toastr.error("Kindly input Project score"));
           } else {
             if (ass > 10) {
-              $(toastr.error("CAT 2 score can`t be greater than 10"));
+              $(toastr.error("Project score can`t be greater than 10"));
             } else {
               if (exc == null || exc == "") {
-                $(toastr.error("Kindly input CAT 3 score"));
+                $(toastr.error("Kindly input Classwork score"));
               } else {
                 if (exc > 10) {
                   $(
                     toastr.error(
-                      "CAT 3 score can`t be greater than 10"
+                      "Classwork score can`t be greater than 10"
                     )
                   );
                 } else {
+                  if(mid == null || mid == "") {
+                    $(toastr.error("Mid-Term score can`t be empty"));
+                  } else {
+
+                    if(mid > 10) {
+                      $(toastr.error("Mid-Term score can`t be greater than 10"));
+
+                    } else {
                   if (exam == null || exam == "") {
                     $(toastr.error("Exam can`t be empty"));
                   } else {
                     if (exam > 100) {
                       $(toastr.error("Exam score can`t be greater than 90"));
                     } else {
-                      if (position == null || position == "") {
-                        $(toastr.error("Position in class field is empty"));
-                      } else {
-                        $.ajax({
+                      $(toastr.error("Loading... Please wait"));
+                     $.ajax({
                           type: "post",
                           url: "functions/init.php",
                           data: {
@@ -69,7 +75,7 @@ $(document).ready(function () {
                             ass: ass,
                             exc: exc,
                             exam: exam,
-                            position: position,
+                            mid: mid,
                             name: name,
                             admis: admis,
                             cla: cla,
@@ -84,6 +90,7 @@ $(document).ready(function () {
                     }
                   }
                 }
+              }
               }
             }
           }
@@ -117,19 +124,7 @@ $(document).ready(function () {
     var ass = $("#ass").val();
     var exc = $("#exc").val();
     var exam = $("#exam").val();
-    var position = $("#position").val();
-    var attd = $("#attd").val();
-    var punc = $("#punc").val();
-    var hons = $("#hons").val();
-    var neat = $("#neat").val();
-    var nonaggr = $("#nonaggr").val();
-    var ldsk = $("#ldsk").val();
-    var sprt = $("#sprt").val();
-    var soci = $("#soci").val();
-    var yth = $("#yth").val();
-    var aes = $("#aes").val();
-    var rel = $("#rel").val();
-    var prin = $("#prin").val();
+    var mid = $("#mid").val();
     var name = $("#name").val();
     var admis = $("#admis").val();
     var cla = $("#cla").val();
@@ -141,24 +136,24 @@ $(document).ready(function () {
       $(toastr.error("Subject can`t be empty"));
     } else {
       if (test == null || test == "") {
-        $(toastr.error("Kindly input CAT 1 score"));
+        $(toastr.error("Kindly input Continuous Assessment score"));
       } else {
         if (test > 10) {
-          $(toastr.error("CAT 1 score can`t be greater than 10"));
+          $(toastr.error("Continuous Assessment score can`t be greater than 10"));
         } else {
           if (ass == null || ass == "") {
-            $(toastr.error("Kindly input CAT 2 score"));
+            $(toastr.error("Kindly input Project score"));
           } else {
             if (ass > 10) {
-              $(toastr.error("CAT 2 score can`t be greater than 10"));
+              $(toastr.error("Project score can`t be greater than 10"));
             } else {
               if (exc == null || exc == "") {
-                $(toastr.error("Kindly input CAT 3 score"));
+                $(toastr.error("Kindly input Classwork score"));
               } else {
                 if (exc > 10) {
                   $(
                     toastr.error(
-                      "CAT 3 score can`t be greater than 10"
+                      "Classwork score can`t be greater than 10"
                     )
                   );
                 } else {
@@ -168,9 +163,15 @@ $(document).ready(function () {
                     if (exam > 100) {
                       $(toastr.error("Exam score can`t be greater than 90"));
                     } else {
-                      if (position == null || position == "") {
-                        $(toastr.error("Position in class field is empty"));
+                      if(mid == null || mid == "") {
+                        $(toastr.error("Mid-Term score can`t be empty"));
                       } else {
+    
+                        if(mid > 10) {
+                          $(toastr.error("Mid-Term score can`t be greater than 10"));
+    
+                        } else {
+                          $(toastr.error("Loading... Please wait"));
                         $.ajax({
                           type: "post",
                           url: "functions/init.php",
@@ -180,7 +181,7 @@ $(document).ready(function () {
                             ass: ass,
                             exc: exc,
                             exam: exam,
-                            position: position,
+                            mid: mid,
                             name: name,
                             admis: admis,
                             cla: cla,
@@ -196,6 +197,7 @@ $(document).ready(function () {
                     }
                   }
                 }
+              }
               }
             }
           }
@@ -245,194 +247,82 @@ $(document).ready(function () {
     var neat = $("#neat").val();
     var nonaggr = $("#nonaggr").val();
     var ldsk = $("#ldsk").val();
-    var sprt = $("#sprt").val();
-    var soci = $("#soci").val();
-    var yth = $("#yth").val();
-    var aes = $("#aes").val();
-    var rel = $("#rel").val();
     var prin = $("#prin").val();
-    var tso = $("#tso").val();
-    var tsa = $("#tsa").val();
-    var tsp = $("#tsp").val();
     var mrkps = $("#mrkps").val();
     var mrkbt = $("#mrkbt").val();
     var perci = $("#perci").val();
     var tog = $("#tog").val();
-    var prof = $("#pro").val();
     var resm = $("#resmes").val();
 
     if (attd == null || attd == "") {
-      $(toastr.error("Carrying Out Assignment field is empty"));
+      $(toastr.error("Mental alertness field is empty"));
     } else {
       if (attd > 5) {
-        $(toastr.error("Max Carrying Out Assignment score is 5"));
+        $(toastr.error("Max Mental alertness score is 5"));
       } else {
         if (punc == null || punc == "") {
-          $(toastr.error("Politeness field is empty"));
+          $(toastr.error("Physical development field is empty"));
         } else {
           if (punc > 5) {
-            $(toastr.error("Politeness field value is greater 5"));
+            $(toastr.error("Physical development field value is greater 5"));
           } else {
             if (hons == null || hons == "") {
-              $(toastr.error("Honesty field is empty"));
+              $(toastr.error("Adjustment in school field is empty"));
             } else {
               if (hons > 5) {
-                $(toastr.error("Honesty field value can`t be greater than 5"));
+                $(toastr.error("Adjustment in school field value can`t be greater than 5"));
               } else {
                 if (neat == null || neat == "") {
-                  $(toastr.error("Neatness field is empty"));
+                  $(toastr.error("Relationship with teachers field is empty"));
                 } else {
                   if (neat > 5) {
-                    $(toastr.error("Neatness field can`t be empty"));
+                    $(toastr.error("Relationship with teachers field can`t be empty"));
                   } else {
                     if (nonaggr == null || nonaggr == "") {
-                      $(toastr.error("Self Control field can`t be empty"));
+                      $(toastr.error("Relationship with students field can`t be empty"));
                     } else {
                       if (nonaggr > 5) {
                         $(
                           toastr.error(
-                            "Self Control field value can`t be greater 5"
+                            "Relationship with students field value can`t be greater 5"
                           )
                         );
                       } else {
                         if (ldsk == null || ldsk == "") {
-                          $(toastr.error("rganisational Ability field is empty"));
+                          $(toastr.error("General attitude and habit field is empty"));
                         } else {
                           if (ldsk > 5) {
-                            $(
-                              toastr.error(
-                                "rganisational Ability field value can`t be greater than 5"
-                              )
-                            );
+                            $(toastr.error("General attitude and habit field value can`t be greater than 5"));
                           } else {
-                            if (sprt == null || sprt == "") {
-                              $(toastr.error("Obedience field can`t be empty"));
-                            } else {
-                              if (sprt > 5) {
-                                $(
-                                  toastr.error(
-                                    "Obedience field value can`t be greater than 5"
-                                  )
-                                );
-                              } else {
-                                if (soci == null || soci == "") {
-                                  $(
-                                    toastr.error(
-                                      "Attitude to Work field can`t be empty"
-                                    )
-                                  );
-                                } else {
-                                  if (soci > 5) {
-                                    $(
-                                      toastr.error(
-                                        "Attitude to Work field value is empty"
-                                      )
-                                    );
-                                  } else {
-                                    if (yth == null || yth == "") {
-                                      $(
-                                        toastr.error(
-                                          "Attentiveness in class field is empty"
-                                        )
-                                      );
-                                    } else {
-                                      if (yth > 5) {
-                                        $(
-                                          toastr.error(
-                                            "Attentiveness in class field value can`t be greater than 5"
-                                          )
-                                        );
-                                      } else {
-                                        if (aes == null || aes == "") {
-                                          $(
-                                            toastr.error(
-                                              "Co-operation field is empty"
-                                            )
-                                          );
-                                        } else {
-                                          if (aes > 5) {
-                                            $(
-                                              toastr.error(
-                                                "Co-operation field value can`t be greater than 5"
-                                              )
-                                            );
-                                          } else {
-                                            if (rel == null || rel == "") {
-                                              $(
-                                                toastr.error(
-                                                  "Relationship with others field is empty"
-                                                )
-                                              );
-                                            } else {
-                                              if (rel > 5) {
-                                                $(
-                                                  toastr.error(
-                                                    "Relationship with others field value can`t be greater than 5"
-                                                  )
-                                                );
-                                              } else {
-                                                if (
-                                                  prin == null ||
-                                                  prin == ""
-                                                ) {
-                                                  $(
-                                                    toastr.error(
-                                                      "Teacher comment field is empty"
-                                                    )
-                                                  );
-                                                } else {
-                                                  $(
-                                                    toastr.error(
-                                                      "Loading Please wait..."
-                                                    )
-                                                  );
+                              $(toastr.error("Loading Please wait..."));
 
-                                                  $.ajax({
-                                                    type: "post",
-                                                    url: "functions/init.php",
-                                                    data: {
-                                                      attd: attd,
-                                                      punc: punc,
-                                                      hons: hons,
-                                                      neat: neat,
-                                                      nonaggr: nonaggr,
-                                                      ldsk: ldsk,
-                                                      sprt: sprt,
-                                                      soci: soci,
-                                                      yth: yth,
-                                                      aes: aes,
-                                                      rel: rel,
-                                                      prin: prin,
-                                                      classr: classr,
-                                                      cls: cls,
-                                                      term: term,
-                                                      tso: tso,
-                                                      tsa: tsa,
-                                                      tsp: tsp,
-                                                      mrkps: mrkps,
-                                                      mrkbt: mrkbt,
-                                                      perci: perci,
-                                                      tog: tog,
-                                                      prof: prof,
-                                                      ses: ses,
-                                                      resm: resm,
-                                                    },
-                                                    success: function (data) {
-                                                      $(
-                                                        toastr.error(data)
-                                                      ).html(data);
-                                                    },
-                                                  });
-                                                }
-                                              }
-                                            }
-                                          }
-                                        }
-                                      }
-                                    }
-                                  }
-                                }
-                              }
+                              $.ajax({
+                                type: "post",
+                                url: "functions/init.php",
+                                data: {
+                                  attd: attd,
+                                  punc: punc,
+                                  hons: hons,
+                                  neat: neat,
+                                  nonaggr: nonaggr,
+                                  ldsk: ldsk,
+                                  prin: prin,
+                                  classr: classr,
+                                  cls: cls,
+                                  term: term,
+                                  mrkps: mrkps,
+                                  mrkbt: mrkbt,
+                                  perci: perci,
+                                  tog: tog,
+                                  ses: ses,
+                                  resm: resm,
+                                },
+                                success: function (data) {
+                                  $(
+                                    toastr.error(data)
+                                  ).html(data);
+                                },
+                              });
                             }
                           }
                         }
@@ -443,10 +333,9 @@ $(document).ready(function () {
               }
             }
           }
+          }
         }
-      }
-    }
-  });
+        });
 
   //preview result
   $("#prev").click(function () {

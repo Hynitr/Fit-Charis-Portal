@@ -64,97 +64,42 @@ $rower = mysqli_fetch_array($res);
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="form-group col-md-2">
-                                            <label for="exampleInputEmail1">Carrying Out Assignment.:</label>
+                                            <label for="exampleInputEmail1">Mental alertness:</label>
 
-                                            <input type="number" name="date" id="attd"
-                                                placeholder="Carrying Out Assignment" class="form-control">
-                                        </div>
-                                        <!-- /.input group -->
-                                        <div class="form-group col-md-2">
-                                            <label for="exampleInputEmail1">Politeness.:</label>
-                                            <input type="number" name="month" id="punc" placeholder="Politeness"
+                                            <input type="number" name="date" id="attd" placeholder="Mental alertness"
                                                 class="form-control">
                                         </div>
                                         <!-- /.input group -->
                                         <div class="form-group col-md-2">
-                                            <label for="exampleInputEmail1">Honesty.:</label>
-                                            <input type="number" name="year" id="hons" placeholder="Honesty"
-                                                class="form-control">
+                                            <label for="exampleInputEmail1">Physical development:</label>
+                                            <input type="number" name="month" id="punc"
+                                                placeholder="Physical development" class="form-control">
                                         </div>
                                         <!-- /.input group -->
                                         <div class="form-group col-md-2">
-                                            <label for="exampleInputEmail1">Neatness.:</label>
-                                            <input type="number" name="year" id="neat" placeholder="Neatness"
-                                                class="form-control">
+                                            <label for="exampleInputEmail1">Adjustment in school:</label>
+                                            <input type="number" name="year" id="hons"
+                                                placeholder="Adjustment in school" class="form-control">
                                         </div>
                                         <!-- /.input group -->
                                         <div class="form-group col-md-2">
-                                            <label for="exampleInputEmail1">Self Control.:</label>
-                                            <input type="number" name="year" id="nonaggr" placeholder="Self Control"
-                                                class="form-control">
+                                            <label for="exampleInputEmail1">Relationship with teachers:</label>
+                                            <input type="number" name="year" id="neat"
+                                                placeholder="Relationship with teachers" class="form-control">
                                         </div>
                                         <!-- /.input group -->
                                         <div class="form-group col-md-2">
-                                            <label for="exampleInputEmail1">Organisational Ability.:</label>
+                                            <label for="exampleInputEmail1">Relationship with students:</label>
+                                            <input type="number" name="year" id="nonaggr"
+                                                placeholder="Relationship with students" class="form-control">
+                                        </div>
+                                        <!-- /.input group -->
+                                        <div class="form-group col-md-2">
+                                            <label for="exampleInputEmail1">General attitude and habit:</label>
                                             <input type="number" name="year" id="ldsk"
-                                                placeholder="Organisational Ability" class="form-control">
+                                                placeholder="General attitude and habit" class="form-control">
                                         </div>
                                         <!-- /.input group -->
-
-                                    </div>
-                                </div>
-
-
-                                <div class="form-group">
-                                    <div class="row">
-                                        <div class="form-group col-md-2">
-                                            <label for="exampleInputEmail1">Obedience.:</label>
-                                            <input type="number" name="date" id="sprt" placeholder="Obedience"
-                                                class="form-control">
-                                        </div>
-                                        <!-- /.input group -->
-                                        <div class="form-group col-md-2">
-                                            <label for="exampleInputEmail1">Attitude to Work.:</label>
-                                            <input type="number" name="month" id="soci" placeholder="Attitude to Work"
-                                                class="form-control">
-                                        </div>
-                                        <!-- /.input group -->
-                                        <div class="form-group col-md-2">
-                                            <label for="exampleInputEmail1">Attentiveness in class.:</label>
-                                            <input type="number" name="year" id="yth"
-                                                placeholder="Attentiveness in class" class="form-control">
-                                        </div>
-                                        <!-- /.input group -->
-                                        <div class="form-group col-md-2">
-                                            <label for="exampleInputEmail1">Co-operation.:</label>
-                                            <input type="number" name="year" id="aes" placeholder="Co-operation"
-                                                class="form-control">
-                                        </div>
-                                        <!-- /.input group -->
-                                        <div class="form-group col-md-4">
-                                            <label for="exampleInputEmail1">Relationship with others.:</label>
-                                            <input type="number" name="year" id="rel"
-                                                placeholder="Relationship with others" class="form-control">
-                                        </div>
-
-                                        <div class="form-group col-md-3" hidden>
-                                            <label for="exampleInputEmail1">Times school opened.:</label>
-                                            <input type="number" name="year" id="tso" value='0'
-                                                placeholder="Times school opened" class="form-control">
-                                        </div>
-
-                                        <div class="form-group col-md-3" hidden>
-                                            <label for="exampleInputEmail1">Times student absent.:</label>
-                                            <input type="number" name="year" id="tsa" value='0'
-                                                placeholder="Times student absent" class="form-control">
-                                        </div>
-
-                                        <div class="form-group col-md-3" hidden>
-                                            <label for="exampleInputEmail1">Times student present.:</label>
-                                            <input type="number" name="year" id="tsp"
-                                                placeholder="Times student present" value='0' class="form-control">
-                                        </div>
-
 
                                         <?php
 $sql = "SELECT sum(sn) AS pss FROM result WHERE `admno` = '$data' AND `class` = '$cls' AND `term` = '$term' AND `ses` = '$ses'";
@@ -260,80 +205,66 @@ $pos  = mysqli_fetch_array($ress);
                                                 class="form-control" disabled>
                                         </div>
 
-                                        <?php
-     if ($term == "1st Term" || $term == "2nd Term") {
-
-echo '<input type="text" name="year" id="pro" value="null" class="form-control" hidden>';
-} elseif ($term == "3rd Term" && $perc < 40)
- {
-
-  $rep = "Advised to repeat";
-  
- ?>
-
-                                        <div class="form-group col-md-3">
-                                            <label for="exampleInputEmail1">Promoted .:</label>
-                                            <input type="text" name="year" id="pro" value="<?php echo $rep ?>"
-                                                class="form-control" disabled>
-                                        </div>
-                                        <?php
-} else {
-  if ($cls == 'Basic 1') {
-   $cs = 'Basic 2';
-  } else {
-  if ($cls == 'Basic 2') {
-   $cs = 'Basic 3';
-  } else {
-  if ($cls == 'Basic 3') {
-   $cs = 'Basic 4';
-  } else {
-  if ($cls == 'Basic 4') {
-   $cs = 'Basic 5-6';
-  } else {
-  if ($cls == 'Basic 5-6') {
-   $cs = 'J.S.S 1';
-  } else {
-  if ($cls == 'J.S.S 1') {
-   $cs = 'J.S.S 2';
-  } else {
-  if ($cls == 'J.S.S 2') {
-  $cs = 'J.S.S 3';
-  } else {
-  if ($cls == 'J.S.S 3') {
-  $cs = 'S.S.S 1';
-  } else {
-  if ($cls == 'S.S.S 1') {
-  $cs = 'S.S.S 2';
-  } else {
-  if ($cls == 'S.S.S 2') {
-  $cs = 'S.S.S 3';
-  }
-  }
-  }
-  }
-  }
-  }
-  }
-  }
-  }
-  }
- $rep = "Promoted to ".$cs;
- $_SESSION['rep'] = $rep;
-?>
-
-                                        <div class="form-group col-md-3">
-                                            <label for="exampleInputEmail1">Promoted .:</label>
-                                            <input type="text" id="pro" value="<?php echo $rep ?>" class="form-control"
-                                                disabled>
-                                        </div>
-
-                                        <?php
-}
-?>
                                         <div class="form-group col-md-12">
                                             <label for="exampleInputEmail1">School Resumes .:</label>
                                             <input type="date" name="resmes" id="resmes" class="form-control">
                                         </div>
+
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group" hidden>
+                                    <div class="row">
+                                        <div class="form-group col-md-2">
+                                            <label for="exampleInputEmail1">Obedience.:</label>
+                                            <input type="number" name="date" id="sprt" placeholder="Obedience"
+                                                class="form-control">
+                                        </div>
+                                        <!-- /.input group -->
+                                        <div class="form-group col-md-2">
+                                            <label for="exampleInputEmail1">Attitude to Work.:</label>
+                                            <input type="number" name="month" id="soci" placeholder="Attitude to Work"
+                                                class="form-control">
+                                        </div>
+                                        <!-- /.input group -->
+                                        <div class="form-group col-md-2">
+                                            <label for="exampleInputEmail1">Attentiveness in class.:</label>
+                                            <input type="number" name="year" id="yth"
+                                                placeholder="Attentiveness in class" class="form-control">
+                                        </div>
+                                        <!-- /.input group -->
+                                        <div class="form-group col-md-2">
+                                            <label for="exampleInputEmail1">Co-operation.:</label>
+                                            <input type="number" name="year" id="aes" placeholder="Co-operation"
+                                                class="form-control">
+                                        </div>
+                                        <!-- /.input group -->
+                                        <div class="form-group col-md-4">
+                                            <label for="exampleInputEmail1">Relationship with others.:</label>
+                                            <input type="number" name="year" id="rel"
+                                                placeholder="Relationship with others" class="form-control">
+                                        </div>
+
+                                        <div class="form-group col-md-3" hidden>
+                                            <label for="exampleInputEmail1">Times school opened.:</label>
+                                            <input type="number" name="year" id="tso" value='0'
+                                                placeholder="Times school opened" class="form-control">
+                                        </div>
+
+                                        <div class="form-group col-md-3" hidden>
+                                            <label for="exampleInputEmail1">Times student absent.:</label>
+                                            <input type="number" name="year" id="tsa" value='0'
+                                                placeholder="Times student absent" class="form-control">
+                                        </div>
+
+                                        <div class="form-group col-md-3" hidden>
+                                            <label for="exampleInputEmail1">Times student present.:</label>
+                                            <input type="number" name="year" id="tsp"
+                                                placeholder="Times student present" value='0' class="form-control">
+                                        </div>
+
+
                                     </div>
                                 </div>
 

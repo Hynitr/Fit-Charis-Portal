@@ -22,13 +22,6 @@ $sql = "SELECT * FROM result WHERE `class` = '$cls' AND `term` = '$term' AND `su
 $resu = query($sql);
 $row  = mysqli_fetch_array($resu);
 
-//get total number of students
-$dql = "SELECT sum(sn) AS tot FROM students WHERE `Class` = '$cls'";
-$ress = query($dql);
-$wsa = mysqli_fetch_array($ress);
-
-$hrt = $wsa['tot'];
-
 
 ?>
 
@@ -84,98 +77,38 @@ $hrt = $wsa['tot'];
 
                         <div class="form-group">
                             <div class="row">
-                                <?php
-                        if($cls == 'Transition' || $cls == 'Reception' || $cls == 'Kindergarten' || $cls == 'Nursery 1') {
-
-                            echo ' 
-                            
-                            <div class="form-group col-md-2">
-                                    <label for="exampleInputEmail1">CAT 1(10) .:</label>
-                                    <input type="number" name="date" id="test" value="'.$row['test'].'"
-                                placeholder="CAT 1(10)" class="form-control">
-                            </div>
-                            <!-- /.input group -->
-                            <div class="form-group col-md-2">
-                                <label for="exampleInputEmail1">CAT 2(10).:</label>
-                                <input type="number" name="month" id="ass" value="'.$row['ass'].'"
-                                placeholder="CAT 2(10)" class="form-control">
-                            </div>
-                            <!-- /.input group -->
-                            <div class="for-group col-md-2" hidden>
-                                <label for="exampleInputEmail1">CAT 3(10).:</label>
-                                <input type="number" name="year" id="exc" value="0" placeholder="CAT 3(10"
-                                    class="form-control">
-                            </div>
-                            <!-- /.input group -->
-                            <div class="form-group col-md-2">
-                                <label for="exampleInputEmail1">Exam(80) .:</label>
-                                <input type="number" name="year" id="exam" min="1" max="90"
-                                    value="'.$row['exam'].'" placeholder="Exam(80)" class="form-control">
-                            </div>
-
-
-                            ';
-
-                            } else {
-
-                            echo '
-
-
-                            <div class="form-group col-md-2">
-                                <label for="exampleInputEmail1">CAT 1(10) .:</label>
-                                <input type="number" name="date" id="test" value="'.$row['test'].'"
-                                placeholder="CAT 1(10)" class="form-control">
-                            </div>
-                            <!-- /.input group -->
-                            <div class="form-group col-md-2">
-                                <label for="exampleInputEmail1">CAT 2(10).:</label>
-                                <input type="number" name="month" id="ass" value="'.$row['ass'].'"
-                                placeholder="CAT 2(10)" class="form-control">
-                            </div>
-                            <!-- /.input group -->
-                            <div class="for-group col-md-2">
-                                <label for="exampleInputEmail1">CAT 3(10).:</label>
-                                <input type="number" name="year" id="exc" value="'.$row['classex'].'"
-                                placeholder="CAT 3(10)" class="form-control">
-                            </div>
-                            <!-- /.input group -->
-                            <div class="form-group col-md-2">
-                                <label for="exampleInputEmail1">Exam(70) .:</label>
-                                <input type="number" name="year" id="exam" min="1" max="70"
-                                    value="'.$row['exam'].'" placeholder="Exam(70)" class="form-control">
-                            </div>
-
-                            ';
-                            }
-
-                            ?>
-
-                                <!-- /.input group -->
-                                <div class="form-group col-md-2" hidden>
-                                    <label for="exampleInputEmail1">Position in Class .:</label>
-                                    <input type="text" name="year" id="position" placeholder="1st, 2nd, 3rd e.t.c"
-                                        class="form-control" value="<?php echo $row['position']; ?>">
-                                    <!--- <select id="position" class="form-control">
-                                        <option id="position">1st</option>
-                                        <option id="position">2nd</option>
-                                        <option id="position">3rd</option>
-                                        <?php
-                        $x = 4;
-
-                        while($x <= $hrt) {
-                            echo '
-
-   
-                          <option id="position">'.$x.'th </option>
-                       
-
-                          <br>';
-                          $x++;
-                      }
-                      ?>
-                                    </select>--->
-
+                                <div class="form-group col-md-3">
+                                    <label for="exampleInputEmail1">Continuous Assessment(10):</label>
+                                    <input type="number" name="date" id="test" value="<?php echo $row['test'] ?>"
+                                        placeholder="Continuous Assessment(10):" class="form-control">
                                 </div>
+                                <!-- /.input group -->
+                                <div class="form-group col-md-2">
+                                    <label for="exampleInputEmail1">Project(10):</label>
+                                    <input type="number" name="month" id="ass" value="<?php echo $row['ass'] ?>"
+                                        placeholder="Project(10):" class="form-control">
+                                </div>
+                                <!-- /.input group -->
+                                <div class="for-group col-md-2">
+                                    <label for="exampleInputEmail1">Classwork(10):</label>
+                                    <input type="number" name="year" id="exc" value="<?php echo $row['classex'] ?>"
+                                        placeholder="Classwork(10):" class="form-control">
+                                </div>
+                                <!-- /.input group -->
+                                <div class="for-group col-md-2">
+                                    <label for="exampleInputEmail1">Mid-Term(10):</label>
+                                    <input type="number" name="year" id="mid" value="<?php echo $row['classex'] ?>"
+                                        placeholder="Mid-Term(10):" class="form-control">
+                                </div>
+                                <!-- /.input group -->
+                                <div class="form-group col-md-2">
+                                    <label for="exampleInputEmail1">Exam(60) .:</label>
+                                    <input type="number" name="year" id="exam" min="1" max="70"
+                                        value="<?php echo $row['exam'] ?>" placeholder="Exam(60)" class="form-control">
+                                </div>
+
+
+
 
                             </div>
                         </div>
