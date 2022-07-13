@@ -16,6 +16,11 @@ $res = query("$sl");
 $rower = mysqli_fetch_array($res);
 
 
+$sql= "SELECT * FROM `motor` WHERE `admno` = '$data' AND `term` = '$term' AND `ses` = '$ses' AND `class` = '$cls'";
+$result_set=query($sql);
+$row= mysqli_fetch_array($result_set);
+
+
 ?>
 
 <!-- Content Wrapper. Contains page content -->
@@ -25,10 +30,8 @@ $rower = mysqli_fetch_array($res);
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-12">
-                    <h1 class="m-0 text-dark">Physical
-                        Development Report for
-                        <?php echo $rower['SurName']." ".$rower['Middle Name']." ".$cls ?> -
-                        <?php echo $term ?> (<?php echo $ses ?> session)</h1>
+                    <h1 class="m-0 text-dark">Edit Physical
+                        Development Report</h1>
                 </div><!-- /.col -->
 
             </div><!-- /.row -->
@@ -36,100 +39,6 @@ $rower = mysqli_fetch_array($res);
     </div>
     <!-- /.content-header -->
 
-    <?php
- $sql= "SELECT * FROM `motor` WHERE `admno` = '$data' AND `term` = '$term' AND `ses` = '$ses' AND `class` = '$cls'";
- $result_set = query($sql);
- 
-    if(row_count($result_set) == null) {
-            
-          } else {
-          ?>
-
-
-    <section id="preview" class="content">
-        <!-- right column -->
-        <div class="col-md-12">
-            <div class="card card-dark">
-                <div class="card-header">
-                    <h3 class="card-title">Preview <?php echo $cls ?> - <?php echo $term ?> (<?php echo $ses ?> session)
-                        Result for
-                        <?php echo $rower['SurName']." ".$rower['Middle Name']." ".$rower['Last Name'] ?></h3>
-
-                    <div class="card-tools">
-
-                        <a
-                            href="./editmotor?id=<?php echo $data ?>&cls=<?php echo $cls ?>&term=<?php echo $term ?>&ses=<?php echo $ses ?>">
-                            <button type="button" id="del" data-toggle="tooltip" title="Edit" class="btn btn-tool"><i
-                                    class="fas fa-edit"></i>
-                            </button></a>
-
-                        <button type="button" data-toggle="tooltip" title="Minimize" class="btn btn-tool"
-                            data-card-widget="collapse"><i class="fas fa-minus"></i>
-                        </button>
-                    </div>
-                </div>
-                <!-- /.card-header -->
-                <!-- /.card-header -->
-                <div class="card-body table-responsive p-0">
-                    <table class="table table-hover text-nowrap table-bordered table-striped">
-                        <thead>
-                            <tr class="text-center">
-                                <th>Mental <br /> Alertness</th>
-                                <th>Physical <br /> development</th>
-                                <th>Adjustment in <br /> school</th>
-                                <th>Relationship with <br />teachers</th>
-                                <th>Relationship with <br />students</th>
-                                <th>General attitude<br /> and habit</th>
-                                <th>Mark Obt / <br />Mark Posb</th>
-                                <th>Percent</th>
-                                <th>Grade</th>
-
-                            </tr>
-                        </thead>
-
-                        <tbody>
-                            <?php
- $sql= "SELECT * FROM `motor` WHERE `admno` = '$data' AND `term` = '$term' AND `ses` = '$ses' AND `class` = '$cls'";
- $result_set=query($sql);
-  while($row= mysqli_fetch_array($result_set))
- {
-
-
-                            echo '
-
-                            <tr class="text-center">
-                                                <td>'.$row['attendance'].' </td>
-                                                <td>'.$row['punctuality'].'</td>
-                                                <td>'.$row['honesty'].'</td>
-                                                <td>'.$row['neatness'].'</td>
-                                                <td>'.$row['nonaggr'].'</td>                                               
-                                                <td>'.$row['leader'].'</td>
-                                                <td>'.$row['mrkobt']." / ".$row['mrkpos'].'</td>
-                                                <td>'.$row['perc'].'</td>
-                                                <td>'.$row['totgra'].'</td>
-                    
-                    
-                             </tr>
-                    
-
-
-                            ';
-                            }
-                            if(row_count($result_set) == 0) {
-
-                            echo "<span style='color:red'>No records found</span>";
-                            }
-                            ?>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <!-- /.card -->
-        </div>
-    </section>
-    <?php
-          }
-          ?>
 
     <!-- Main content -->
     <section class="content">
@@ -138,7 +47,7 @@ $rower = mysqli_fetch_array($res);
             <!-- general form elements disabled -->
             <div class="card card-warning">
                 <div class="card-header">
-                    <h3 class="card-title">Upload Physical Development Result for <strong>
+                    <h3 class="card-title">Edit Physical Development Result for <strong>
                             <?php echo $rower['SurName']." ".$rower['Middle Name']." ".$rower['Last Name'] ?></strong> -
                         <?php echo $term ?> </h3>
                     <div class="card-tools">
@@ -159,43 +68,51 @@ $rower = mysqli_fetch_array($res);
                                         <div class="form-group col-md-2">
                                             <label for="exampleInputEmail1">Mental alertness:</label>
 
-                                            <input type="number" name="date" id="attd" placeholder="Mental alertness"
+                                            <input type="number" name="date" id="attd"
+                                                value="<?php echo $row['attendance'] ?>" placeholder="Mental alertness"
                                                 class="form-control">
                                         </div>
                                         <!-- /.input group -->
                                         <div class="form-group col-md-2">
                                             <label for="exampleInputEmail1">Physical development:</label>
                                             <input type="number" name="month" id="punc"
+                                                value="<?php echo $row['punctuality'] ?>"
                                                 placeholder="Physical development" class="form-control">
                                         </div>
                                         <!-- /.input group -->
                                         <div class="form-group col-md-2">
                                             <label for="exampleInputEmail1">Adjustment in school:</label>
                                             <input type="number" name="year" id="hons"
-                                                placeholder="Adjustment in school" class="form-control">
+                                                value="<?php echo $row['honesty'] ?>" placeholder="Adjustment in school"
+                                                class="form-control">
                                         </div>
                                         <!-- /.input group -->
                                         <div class="form-group col-md-2">
                                             <label for="exampleInputEmail1">Relationship with teachers:</label>
                                             <input type="number" name="year" id="neat"
+                                                value="<?php echo $row['neatness'] ?>"
                                                 placeholder="Relationship with teachers" class="form-control">
                                         </div>
                                         <!-- /.input group -->
                                         <div class="form-group col-md-2">
                                             <label for="exampleInputEmail1">Relationship with students:</label>
                                             <input type="number" name="year" id="nonaggr"
+                                                value="<?php echo $row['nonaggr'] ?>"
                                                 placeholder="Relationship with students" class="form-control">
                                         </div>
                                         <!-- /.input group -->
                                         <div class="form-group col-md-2">
                                             <label for="exampleInputEmail1">General attitude and habit:</label>
                                             <input type="number" name="year" id="ldsk"
+                                                value="<?php echo $row['leader'] ?>"
                                                 placeholder="General attitude and habit" class="form-control">
                                         </div>
                                         <!-- /.input group -->
                                         <div class="form-group col-md-12">
                                             <label for="exampleInputEmail1">School Resumes .:</label>
-                                            <input type="date" name="resmes" id="resmes" class="form-control">
+                                            <input type="date" name="resmes" id="resmes"
+                                                value="<?php echo date('Y-m-d',strtotime($row["resm"])) ?>"
+                                                class="form-control">
                                         </div>
 
 
@@ -214,37 +131,64 @@ $pos  = mysqli_fetch_array($ress);
   $perc = 0;
   $grade = 0;
  } else {
-    
  $perc    = ($mrkobt/$mrkpos) * 100;
 
- if ($perc <= 44) {
+ if ($perc <= 39) {
     
-    $grade  = "5th Class";
+    $grade  = "Ninth Class";
    
      } else {
 
-  if ($perc <= 54) {
+  if ($perc <= 44) {
     
-  $grade  = "4th Class";
+  $grade  = "Eighth Class";
   
+  } else {
+
+  if ($perc <= 49) {
+
+  $grade  = "Seventh Class";
+ 
+  } else {
+
+  if ($perc <= 54) {
+  
+  $grade  = "Sixth Class";
+  
+  } else {
+
+  if ($perc <= 59) {
+  
+  $grade  = "Fifth Class";
+ 
   } else {
 
   if ($perc <= 64) {
 
-  $grade  = "3rd Class";
+  $grade  = "Fouth Class";
  
   } else {
 
-  if ($perc <= 74) {
+  if ($perc <= 69) {
   
-  $grade  = "2nd Class";
+  $grade  = "Third Class";
+ 
+  } else {
+
+  if ($perc <= 89) {
   
+  $grade  = "Second Class";
+ 
   } else {
 
   if ($perc <= 100) {
-  
-  $grade  = "1st Class";
+
+  $grade  = "First Class";
  
+  }
+  }
+  }
+  }
   }
   }
   }
@@ -291,6 +235,7 @@ $pos  = mysqli_fetch_array($ress);
                         <div class="form-group">
                             <label for="exampleInputEmail1">Class Teacher Comment .:</label>
                             <select id="prin" class="form-control">
+                                <option id="prin"><?php echo $row['principal'] ?></option>
                                 <optgroup label="Attitude">
                                     <option id="prin">An enthusiastic learner who seems to enjoy school.</option>
                                     <option id="prin">Exhibits a positive outlook and attitude in the classroom.
@@ -494,11 +439,8 @@ $pos  = mysqli_fetch_array($ress);
 
                         <p class="text-danger">Recheck all details typed in before submitting</p>
 
-                        <a href="./compres"><button type="button"
-                                class="btn float-right btn-primary btn-outline-light">Select
-                                a new pupil/student</button></a>
-
-                        <button type="button" id="subdone" class="btn float-left btn-primary btn-outline-light">Submit
+                        <button type="button" id="eddsubdone"
+                            class="btn float-right btn-primary btn-outline-light">Submit
                             Result</button>
 
                     </form>
@@ -525,103 +467,6 @@ $pos  = mysqli_fetch_array($ress);
 <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
-
-
-
-
-<!---modal reset--->
-<div class="modal fade" id="modal-reset">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content bg-danger">
-            <div class="modal-header">
-                <h4 class="modal-title">Reset
-                    <?php echo $rower['SurName']." ".$rower['Middle Name']." ".$rower['Last Name']. " ".$term ?>
-                    Result(s)</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span></button>
-            </div>
-            <div class="modal-body">
-                <div class="card-body">
-                    <p class="text-grey">Resetting will clear off all uploaded result(s) for the above named person.</p>
-                    <p class="text-grey">Are you sure you want to continue?</p>
-                    <input type="text" value="<?php echo $data; ?>" id="subb" hidden>
-                    <input type="text" value="<?php echo $term; ?>" id="trm" hidden>
-                    <input type="text" value="<?php echo $cls; ?>" id="ccs" hidden>
-                </div>
-            </div>
-            <div class="modal-footer justify-content-between">
-                <button type="button" class="btn btn-outline-light" data-dismiss="modal">No! Cancel</button>
-                <button type="button" id="reseted" class="btn btn-outline-light">Yes! Continue</button>
-            </div>
-        </div>
-        <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
-</div>
-<!-- /.modal -->
-
-
-
-
-
-
-
-
-
-
-
-<!---modal delete--->
-<div class="modal fade" id="modal-delete">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content bg-danger">
-            <div class="modal-header">
-                <h4 class="modal-title">Delete a Subject Result <span id="msg"></span></h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span></button>
-            </div>
-            <div class="modal-body">
-                <div class="card-body">
-                    <p class="text-grey">Deleting a subject result will delete all records for that subject result and
-                        also the the subject. <br>If you are not sure about this, kindly contact the school ICT or
-                        cancel this dialog.</p>
-
-                    <form name="deleting">
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">Subject Uploaded</span>
-                            </div>
-                            <select id="position" class="form-control">
-                                <?php
-                 
- $sql= "SELECT * FROM `result` WHERE `admno` = '$data' AND `term` = '$term'";;
- $result_set=query($sql);
- while($row= mysqli_fetch_array($result_set))
- {
-          ?>
-                                <option id="sbjjr"><?php echo $row['subject']; ?></option>
-
-                                <?php
-                  }
-                  ?>
-                            </select>
-                            <input type="text" value="<?php echo $data; ?>" id="subbr" hidden>
-                            <input type="text" value="<?php echo $term; ?>" id="trmr" hidden>
-                            <input type="text" value="<?php echo $cls; ?>" id="ccsr" hidden>
-                        </div>
-                    </form>
-                </div>
-            </div>
-            <div class="modal-footer justify-content-between">
-                <button type="button" class="btn btn-outline-light" data-dismiss="modal">Cancel</button>
-                <button type="button" id="movedel" class="btn btn-outline-light">Continue</button>
-            </div>
-        </div>
-        <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
-</div>
-<!-- /.modal -->
-
 
 
 

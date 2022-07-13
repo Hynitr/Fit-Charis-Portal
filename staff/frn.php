@@ -34,7 +34,7 @@ $row= mysqli_fetch_array($result_set);
 
                         <div class="card card-danger">
                             <div class="card-header">
-                                <h3 class="card-title">Upload Report Sheet for <?php echo $row['staffclass'] ?></h3>
+                                <h3 class="card-title"></h3>
                             </div>
                             <div class="card-body">
 
@@ -60,8 +60,27 @@ $ws = $row['staffclass'];
 
                                 </select>
 
-                                <input type="text" id="cls" value="<?php echo $ws ?>" hidden>
+                                <br /><br />
 
+                                <label>Select a Class.:</label>
+                                <select name="cls" id="cls" class="custom-select">
+                                    <option name="cls" id="cls"><?php echo $ws ?></option>
+                                    <option name="cls" id="cls">Nursery 1</option>
+                                    <option name="cls" id="cls">Nursery 2</option>
+                                    <option name="cls" id="cls">KG 1</option>
+                                    <option name="cls" id="cls">KG 2</option>
+                                    <option name="cls" id="cls">Year 1</option>
+                                    <option name="cls" id="cls">Year 2</option>
+                                    <option name="cls" id="cls">Year 3</option>
+                                    <option name="cls" id="cls">Year 4</option>
+                                    <option name="cls" id="cls">Year 5</option>
+                                    <option name="cls" id="cls">J.S.S 1</option>
+                                    <option name="cls" id="cls">J.S.S 2</option>
+                                    <option name="cls" id="cls">J.S.S 3</option>
+                                    <option name="cls" id="cls">S.S.S 1</option>
+                                    <option name="cls" id="cls">S.S.S 2</option>
+                                    <option name="cls" id="cls">S.S.S 3</option>
+                                </select>
 
                                 <br /><br />
 

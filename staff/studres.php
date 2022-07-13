@@ -23,15 +23,11 @@ $rower = mysqli_fetch_array($res);
     <div class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1 class="m-0 text-dark">Upload Result for <?php echo $term ?></h1>
+                <div class="col-sm-12">
+                    <h1 class="m-0 text-dark">Upload Result for <?php echo $cls ?> - <?php echo $term ?>
+                        (<?php echo $ses ?> session)</h1>
                 </div><!-- /.col -->
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="./">Dashboard</a></li>
-                        <li class="breadcrumb-item active">Upload Result</li>
-                    </ol>
-                </div><!-- /.col -->
+
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
     </div>
@@ -53,7 +49,8 @@ $rower = mysqli_fetch_array($res);
         <div class="col-md-12">
             <div class="card card-dark">
                 <div class="card-header">
-                    <h3 class="card-title">Preview <?php echo $term ?> Result for
+                    <h3 class="card-title">Preview <?php echo $cls ?> - <?php echo $term ?> (<?php echo $ses ?> session)
+                        Result for
                         <?php echo $rower['SurName']." ".$rower['Middle Name']." ".$rower['Last Name'] ?></h3>
 
                     <div class="card-tools">
@@ -106,11 +103,10 @@ $rower = mysqli_fetch_array($res);
                             <td>'.$row['subject'].' 
                     <a style="color: red;" href="./edit?id='.$data.'&sbj='.$row['subject'].'&tm='.$term.'&cls='.$cls.'&ses='.$ses.'"><br/>Edit</a>
                                                 </td>
-                                                
-                                                <td>'.$row['test'].'</td>
-                                                <td>'.$row['ass'].'</td>
                                                 <td>'.$row['classex'].'</td>
+                                                <td>'.$row['test'].'</td>
                                                 <td>'.$row['mid'].'</td>
+                                                <td>'.$row['ass'].'</td>                                               
                                                 <td>'.$row['exam'].'</td>
                                                 <td>'.$row['total'].'</td>
                                                 <td>'.$row['grade'].'</td>
@@ -148,8 +144,8 @@ $rower = mysqli_fetch_array($res);
             <div class="card card-warning">
                 <div class="card-header">
                     <h3 class="card-title">Upload Result for <strong>
-                            <?php echo $rower['SurName']." ".$rower['Middle Name']." ".$rower['Last Name'] ?></strong> -
-                        <?php echo $term ?> (<?php echo $ses ?> session) </h3>
+                            <?php echo $rower['SurName']." ".$rower['Middle Name']." ".$rower['Last Name'] ?></strong>:
+                        <?php echo $cls ?> - <?php echo $term ?> (<?php echo $ses ?> session) </h3>
                     <div class="card-tools">
                         <button type="button" data-toggle="tooltip" title="Minimize" class="btn btn-tool"
                             data-card-widget="collapse"><i class="fas fa-minus"></i>
@@ -220,8 +216,9 @@ $rower = mysqli_fetch_array($res);
 
                         <button type="button" id="ressl" class="btn float-left btn-danger btn-outline-light">Upload
                             Subject Result</button>
-                        <button type="button" id="done" class="btn float-right btn-primary btn-outline-light">Next step
-                            >>></button>
+                        <a href="./frn"><button type="button"
+                                class="btn float-right btn-primary btn-outline-light">Select a
+                                new pupil/student</button></a>
 
                     </form>
                 </div>

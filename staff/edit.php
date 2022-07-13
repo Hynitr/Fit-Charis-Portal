@@ -91,7 +91,7 @@ $row  = mysqli_fetch_array($resu);
                                 <!-- /.input group -->
                                 <div class="for-group col-md-2">
                                     <label for="exampleInputEmail1">Mid-Term(10):</label>
-                                    <input type="number" name="year" id="mid" value="<?php echo $row['classex'] ?>"
+                                    <input type="number" name="year" id="mid" value="<?php echo $row['mid'] ?>"
                                         placeholder="Mid-Term(10):" class="form-control">
                                 </div>
                                 <!-- /.input group -->
