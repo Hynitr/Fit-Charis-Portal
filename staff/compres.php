@@ -39,7 +39,7 @@ $row= mysqli_fetch_array($result_set);
                                 <select name="class" id="class" class="custom-select">
                                     <?php
  $ws = $row['staffclass'];
- $sql2="SELECT * from students WHERE `Class` = '$ws'";
+ $sql2="SELECT * from students WHERE `Class` = '$ws' ORDER BY `SurName` asc";
  $result_set2=query($sql2);
  if (row_count($result_set2) < 1) { 
   echo '<option name="cls" id="cls">No Student Available for this class</option>';
