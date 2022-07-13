@@ -698,7 +698,7 @@ if(isset($_POST['attd']) && isset($_POST['punc']) && isset($_POST['hons']) && is
 
 		if ($term == '3rd Term') {
 
-			mover($classr, $cls);
+			//mover($classr, $cls);
 	}
 
 
