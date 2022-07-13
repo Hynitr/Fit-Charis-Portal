@@ -55,11 +55,9 @@ function validation_errors($error_message) {
 
 function validate_user_login() {
 
-	$errors = [];
+	//$errors = [];
 
-	
-
-	if(isset($_POST['submit'])) {
+	if(isset(clean(escape($_POST['submit'])))) {
 
 			$admission       = $_POST['staff'];
 
