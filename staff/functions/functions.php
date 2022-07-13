@@ -51,13 +51,51 @@ function validation_errors($error_message) {
 
 }
 
+function staffattend() {
+
+	$errors = [];
+
+	
+
+	if(isset($_POST['submit'])) {
+
+			$password   	 = md5($_POST['password']);
+			$idd  	 		 = $_POST['iddler'];
+
+			if(!empty($errors)) {
+
+				foreach ($errors as $error) {
+			
+	                echo validation_errors($error); 
+
+				}
+
+			} else {
+
+				if(log_user($password)) {
+					$_SESSION['secured'] = $password;
+					header("location: ./seen?id=$idd");
+
+				} else {
+
+					echo validation_errors("Wrong Password");
+				}
+			} 
+
+		}
+
+} //function
+
+
 /************************validate user login functions**********/
 
 function validate_user_login() {
 
-	//$errors = [];
+	$errors = [];
 
-	if(isset(clean(escape($_POST['submit'])))) {
+	
+
+	if(isset($_POST['submit'])) {
 
 			$admission       = $_POST['staff'];
 
@@ -85,6 +123,7 @@ function validate_user_login() {
 		}
 
 } //function
+
 
 
 /************************ user login functions**********/
