@@ -81,7 +81,7 @@
  {
   ?>
                             <?php echo'
-          <img style="width: 70px; height: 90px" src="'.$call['admn'].'/upload/staffDP/'.$row['passport'].'" class="img-circle img-fluid elevation-2" alt="Profile Picture">';
+          <img style="width: 70px; height: 90px" src="" class="img-circle img-fluid elevation-2" alt="Profile Picture">';
           ?>
                         </div>
                         <div class="info">
