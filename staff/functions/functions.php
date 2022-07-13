@@ -51,7 +51,7 @@ function validation_errors($error_message) {
 
 }
 
-function staffattend() {
+//function staffattend() {
 
 	$errors = [];
 
@@ -84,7 +84,7 @@ function staffattend() {
 
 		}
 
-} //function
+//} //function
 
 
 /************************validate user login functions**********/
