@@ -252,25 +252,25 @@ $pos  = mysqli_fetch_array($ress);
   }
 }
 ?>
-                                        <div class="form-group col-md-3" hidden>
+                                        <div class="form-group col-md-3">
                                             <label for="exampleInputEmail1">Mark Possible.:</label>
                                             <input type="number" name="year" id="mrkps" value="<?php echo $mrkpos ?>"
                                                 class="form-control" disabled>
                                         </div>
 
-                                        <div class="form-group col-md-3" hidden>
+                                        <div class="form-group col-md-3">
                                             <label for="exampleInputEmail1">Mark Obtained.:</label>
                                             <input type="number" name="year" id="mrkbt" value="<?php echo $mrkobt ?>"
                                                 class="form-control" disabled>
                                         </div>
 
-                                        <div class="form-group col-md-3" hidden>
+                                        <div class="form-group col-md-3">
                                             <label for="exampleInputEmail1">Percentage.:</label>
                                             <input type="text" name="year" id="perci"
                                                 value="<?php echo(round($perc,1)); ?>%" class="form-control" disabled>
                                         </div>
 
-                                        <div class="form-group col-md-3" hidden>
+                                        <div class="form-group col-md-3">
                                             <label for="exampleInputEmail1">Total Grade.:</label>
                                             <input type="text" name="year" id="tog" value="<?php echo $grade ?>"
                                                 class="form-control" disabled>
@@ -282,6 +282,35 @@ $pos  = mysqli_fetch_array($ress);
 
 
 
+                                <?php
+                        if($term == '3rd Term') {
+
+                            echo'
+
+                            <label>Promoted to.:</label>
+                            <select name="cls" id="cls" class="custom-select">
+                            <option name="cls" id="cls">Nursery 1</option>
+                            <option name="cls" id="cls">Nursery 2</option>
+                            <option name="cls" id="cls">KG 1</option>
+                            <option name="cls" id="cls">KG 2</option>
+                            <option name="cls" id="cls">Year 1</option>
+                            <option name="cls" id="cls">Year 2</option>
+                            <option name="cls" id="cls">Year 3</option>
+                            <option name="cls" id="cls">Year 4</option>
+                            <option name="cls" id="cls">Year 5</option>
+                            <option name="cls" id="cls">J.S.S 1</option>
+                            <option name="cls" id="cls">J.S.S 2</option>
+                            <option name="cls" id="cls">J.S.S 3</option>
+                            <option name="cls" id="cls">S.S.S 1</option>
+                            <option name="cls" id="cls">S.S.S 2</option>
+                            <option name="cls" id="cls">S.S.S 3</option>
+                                </select>
+
+                                <br /><br />
+
+                                ';
+                                }
+                                ?>
 
 
                             </div>

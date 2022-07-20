@@ -242,6 +242,7 @@ $(document).ready(function () {
   $("#subdone").click(function () {
     var classr = $("#admis").val();
     var cls = $("#cla").val();
+    var ncls = $("#cls").val();
     var term = $("#term").val();
     var ses = $("#ses").val();
     var attd = $("#attd").val();
@@ -312,6 +313,7 @@ $(document).ready(function () {
                                   prin: prin,
                                   classr: classr,
                                   cls: cls,
+                                  ncls: ncls,
                                   term: term,
                                   mrkps: mrkps,
                                   mrkbt: mrkbt,
@@ -345,6 +347,7 @@ $(document).ready(function () {
   $("#eddsubdone").click(function () {
     var classr = $("#admis").val();
     var cls = $("#cla").val();
+    var ncls = $("#cls").val();
     var term = $("#term").val();
     var ses = $("#ses").val();
     var attd = $("#attd").val();
@@ -416,6 +419,7 @@ $(document).ready(function () {
                                   prin: prin,
                                   classr: classr,
                                   cls: cls,
+                                  ncls, ncls,
                                   term: term,
                                   mrkps: mrkps,
                                   mrkbt: mrkbt,

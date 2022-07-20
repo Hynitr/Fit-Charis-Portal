@@ -43,6 +43,7 @@ $ses  =  $_GET['ses'];
                                     <thead>
                                         <tr>
                                             <th>Admission No.</th>
+                                            <th>Name</th>
                                             <th>Mark Possible</th>
                                             <th>Mark Obtained</th>
                                             <th>Percentage</th>
@@ -51,8 +52,7 @@ $ses  =  $_GET['ses'];
                                             <th></th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <?php
+                                    <tbo <?php
 $sl = "SELECT * FROM motor WHERE `class` = '$data' AND `term` = '$tms' AND `ses` = '$ses'";
 $ww = query($sl);
 if(row_count($ww) == 0) {
@@ -60,24 +60,43 @@ if(row_count($ww) == 0) {
   echo "<span class='text-center' style='color:red; font-size: 50px'>No result found</span>";
 } else {
 while ($rw = mysqli_fetch_array($ww)) {
- ?>
-                                        <tr>
-                                            <td><?php echo $rw['admno'] ?></td>
-                                            <td><?php echo $rw['mrkpos'] ?></td>
-                                            <td><?php echo $rw['mrkobt'] ?></td>
-                                            <td><?php echo $rw['perc'] ?></td>
-                                            <td><?php echo $rw['totgra'] ?></td>
-                                            <td><?php echo ucwords($rw['principal']) ?></td>
-                                            <?php echo '
-                                                    <td ><a href="./moreres?id='.$rw['admno'].'&cls='.$data.'&term='.$tms.'&ses='.$ses.'">View Full Result</a></td>';
+
+    $id = $rw['admno'];
+    $asl = "SELECT * FROM students WHERE `AdminID` = '$id'";
+    $aes = query($asl);
+    while ($aw = mysqli_fetch_array($aes)) {
+ ?> <tr>
+                                        <td><?php echo $rw['admno'] ?></td>
+                                        <td><?php echo $aw['SurName'] ?> <?php echo $aw['Middle Name'] ?>
+                                            <?php echo $aw['Last Name'] ?></td>
+                                        <td><?php echo $rw['mrkpos'] ?></td>
+                                        <td><?php echo $rw['mrkobt'] ?></td>
+                                        <td><?php echo $rw['perc'] ?></td>
+                                        <td><?php echo $rw['totgra'] ?></td>
+                                        <td><?php echo ucwords($rw['principal']) ?></td>
+                                        <?php 
+                                            if($rw['tess'] == null || $rw['tess'] == '') {
+                                                
+                                                echo '
+                                                <td ><a href="./aprove?id='.$rw['admno'].'&cls='.$data.'&term='.$tms.'&ses='.$ses.'">Approve Result</a></td>';
+                                        
+                                            } else {
+
+                                            
+                                            echo '
+                                                    <td ><a href="./moreres?id='.$rw['admno'].'&cls='.$data.'&term='.$tms.'&ses='.$ses.'">View Full Result</a></td>
+                                                    <td ><a href="./edit?id='.$rw['admno'].'&cls='.$data.'&term='.$tms.'&ses='.$ses.'">Edit Result</a></td>';
+                                            
+                                                    }
                                                     ?>
 
                                         </tr>
                                         <?php
              }
+            }
                }
                ?>
-                                    </tbody>
+                                        </tbody>
                                 </table>
                             </div>
                             <!-- /.card-body -->

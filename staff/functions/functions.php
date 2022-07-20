@@ -615,7 +615,7 @@ if (isset($_POST['admr']) && isset($_POST['trmr']) && isset($_POST['ccsr']) && i
 
 
 //submit result
-if(isset($_POST['attd']) && isset($_POST['punc']) && isset($_POST['hons']) && isset($_POST['neat']) && isset($_POST['nonaggr']) && isset($_POST['ldsk']) && isset($_POST['prin']) && isset($_POST['classr']) && isset($_POST['cls']) && isset($_POST['term']) && isset($_POST['mrkps'])  && isset($_POST['mrkbt']) && isset($_POST['perci']) && isset($_POST['tog']) && isset($_POST['ses']) && isset($_POST['resm']) || isset($_POST['conf'])) {
+if(isset($_POST['attd']) && isset($_POST['punc']) && isset($_POST['hons']) && isset($_POST['neat']) && isset($_POST['nonaggr']) && isset($_POST['ldsk']) && isset($_POST['prin']) && isset($_POST['classr']) && isset($_POST['cls']) || isset($_POST['ncls']) && isset($_POST['term']) && isset($_POST['mrkps'])  && isset($_POST['mrkbt']) && isset($_POST['perci']) && isset($_POST['tog']) && isset($_POST['ses']) && isset($_POST['resm']) || isset($_POST['conf'])) {
 
 	$attd 		= clean($_POST['attd']);
 	$punc 		= clean($_POST['punc']);
@@ -633,6 +633,13 @@ if(isset($_POST['attd']) && isset($_POST['punc']) && isset($_POST['hons']) && is
 	$tog 		= clean($_POST['tog']);
 	$ses  		= clean($_POST['ses']);
 	$resm       = clean($_POST['resm']);
+
+	if (isset($_POST['nlcs'])) {
+		
+		$ncls 		= clean($_POST['ncls']);
+		mover($classr, $ncls);
+		
+		}
 
 
 	$mrkbt = $attd + $punc + $hons + $neat + $nonaggr + $ldsk + $mokbt;
@@ -695,13 +702,6 @@ if(isset($_POST['attd']) && isset($_POST['punc']) && isset($_POST['hons']) && is
 
 	} else {
 
-
-		if ($term == '3rd Term') {
-
-			//mover($classr, $cls);
-	}
-
-
 	$sql2 = "INSERT INTO motor(`class`, `admno`, `term`, `attendance`, `punctuality`, `honesty`, `neatness`, `nonaggr`, `leader`, `principal`, `mrkpos`, `mrkobt`, `perc`, `totgra`, `ses`, `resm`)";
 	$sql2.= " VALUES('$cls', '$classr', '$term', '$attd', '$punc', '$hons', '$neat', '$nonaggr', '$ldsk', '$prin', '$mrkps', '$mrkbt', '$perci', '$tog', '$ses', '$resm')";
 	$result = query($sql2);
@@ -715,65 +715,10 @@ if(isset($_POST['attd']) && isset($_POST['punc']) && isset($_POST['hons']) && is
 }
 
 
-function mover($classr, $cls)  {
-		if($cls == 'Nursery 1') {
-			$cs = 'Nursery 2';
-		} else {
-		if($cls == 'Nursey 2') {
-			$cs = 'KG 1';
-		} else {
-		if($cls == 'KG 1') {
-			$cs = 'KG 2';
-		} else {
-		if($cls == 'KG 2') {
-			$cs = 'Year 1';
-		} else {
-		if ($cls == 'Year 1') {
-		$cs = 'Year 2';
-		} else {
-		if ($cls == 'Year 2') {
-		$cs = 'Year 3';
-		} else {
-		if ($cls == 'Year 3') {
-		$cs = 'Year 4';
-		} else {
-		if ($cls == 'Year 4') {
-		$cs = 'Year 5';
-		} else {
-		if ($cls == 'Year 5') {
-		$cs = 'J.S.S 1';
-		} else {
-		if ($cls == 'J.S.S 1') {
-		$cs = 'J.S.S 2';
-		} else {
-		if ($cls == 'J.S.S 2') {
-		$cs = 'J.S.S 3';
-		} else {
-		if ($cls == 'J.S.S 3') {
-		$cs = 'S.S.S 1';
-		} else {
-		if ($cls == 'S.S.S 1') {
-		$cs = 'S.S.S 2';
-		} else {
-		if ($cls == 'S.S.S 2') {
-		$cs = 'S.S.S 3';
-		}
-		}
-		}
-		}
-		}
-		}
-		}
-		}
-		}
-		}
-		}
-		}
-		}
-		}
-			
-			$ssl2 = "UPDATE students SET `Class` = '$cs' WHERE `AdminID` = '$classr'";
-			$ress2 = query($ssl2);	
+function mover($classr, $ncls)  {
+	
+	$ssl2 = "UPDATE students SET `Class` = '$ncls' WHERE `AdminID` = '$classr'";
+	$ress2 = query($ssl2);	
 }
 
 

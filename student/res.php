@@ -20,16 +20,17 @@ $sql3 = "SELECT * FROM `motor` WHERE `admno` = '$data' AND `term` = '$tms' AND `
 $result_set3 = query($sql3);
 $row3 = mysqli_fetch_array($result_set3);
 
-if(row_count($result_set3) == 0){
+if(row_count($result_set3) == 0) {
 
    echo  "No result uploaded for this user yet<br/><a href='#' onclick='goBack()';>Click here to go back</a>";
 
+   die();
 } else {
 
 if($row3['tess'] == null || $row3['tess'] == '') {
 
     echo "Your result has not yet been approved by the school admin <br/><a href='#' onclick='goBack()';>Click here to go back</a>";
-    
+    die();
 } else {
 
 $sql4 = "SELECT sum(sn) AS altol FROM students WHERE `Class` = '$cls'";
@@ -168,6 +169,7 @@ $qw2  = mysqli_fetch_array($res2);
             ';
             }
             }
+        }
             echo '
             <th>Cumulative <br /> Average Score</th>
             <th>Grade</th>
@@ -308,7 +310,6 @@ window.addEventListener("load", window.print());
 
 </html>
 <?php
-}
 }
 }
 }

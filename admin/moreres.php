@@ -10,115 +10,29 @@ if(!isset($_GET['id']) && !isset($_GET['term']) && !isset($_GET['cls']) && !isse
 echo "Error 404!";
 } else {
 
-
-$data =  $_GET['id'];
-$tms  =  $_GET['term'];
-$cls  =  $_GET['cls'];
-$ses  =  $_GET['ses'];
-
-$sql3 = "SELECT * FROM `motor` WHERE `admno` = '$data' AND `term` = '$tms' AND `ses` = '$ses'";
-$result_set3 = query($sql3);
-$row3 = mysqli_fetch_array($result_set3);
-
-if(row_count($result_set3) == 0){
-
-   echo  "No result uploaded for this user yet<br/><a href='#' onclick='goBack()';>Click here to go back</a>";
-
-} else {
-
-$sql4 = "SELECT sum(sn) AS altol FROM students WHERE `Class` = '$cls'";
-$res1 = query($sql4);
-$qw1  = mysqli_fetch_array($res1);
-
-$sql5 = "SELECT * FROM students WHERE `AdminID` = '$data'";
-$res2 = query($sql5);
-$qw2  = mysqli_fetch_array($res2);
-
-
-//percentage calculations
-$pee = "SELECT sum(sn) AS pss FROM result WHERE `admno` = '$data' AND `class` = '$cls' AND `term` = '$tms' AND `ses` = '$ses'";
-$pes = "SELECT sum(total) AS mobt FROM result WHERE `admno` = '$data' AND `class` = '$cls' AND `term` = '$tms' AND `ses` = '$ses'";
-$ds   = query($pee);
-$ress = query($pes);
-$dws  = mysqli_fetch_array($ds); 
-$pos  = mysqli_fetch_array($ress);
-
- $mrkpos  = $dws['pss'] * 100;
- $mrkobt  = $pos['mobt'];
- if ($mrkpos == 0 && $mrkobt == 0) {
-  
-  $perc = 0;
-  $grade = 0;
- } else {
- $perc    = ($mrkobt/$mrkpos) * 100;
-
- if ($perc <= 39) {
+    $data =  $_GET['id'];
+    $tms  =  $_GET['term'];
+    $cls  =  $_GET['cls'];
+    $ses  =  $_GET['ses'];
     
-    $grade  = "F9 - Fail";
-   
-     } else {
-
-  if ($perc <= 44) {
+    $sql3 = "SELECT * FROM `motor` WHERE `admno` = '$data' AND `term` = '$tms' AND `ses` = '$ses'";
+    $result_set3 = query($sql3);
+    $row3 = mysqli_fetch_array($result_set3);
     
-  $grade  = "E8 - Pass";
-  
-  } else {
-
-  if ($perc <= 49) {
-
-  $grade  = "D7 - Pass";
- 
-  } else {
-
-  if ($perc <= 54) {
-  
-  $grade  = "C6 - Credit";
-  
-  } else {
-
-  if ($perc <= 59) {
-  
-  $grade  = "C5 - Credit";
- 
-  } else {
-
-  if ($perc <= 64) {
-
-  $grade  = "B3 - Good";
- 
-  } else {
-
-  if ($perc <= 69) {
-  
-  $grade  = "B2 - Very Good";
- 
-  } else {
-
-  if ($perc <= 89) {
-  
-  $grade  = "A1 - Excellent";
- 
-  } else {
-
-  if ($perc <= 100) {
-
-  $grade  = "A* - Distinction";
- 
-  }
-  }
-  }
-  }
-  }
-  }
-  }
-  }
-  }
-}
-
-//update new details'
-$updls = "UPDATE motor SET `mrkpos` = '$mrkpos', `mrkobt` = '$mrkobt', `perc` = '$perc', `totgra` = '$grade' WHERE `admno` = '$data' AND `class` = '$cls' AND `term` = '$tms' AND `ses` = '$ses'";
-$updlslq = query($updls);
-?>
+    if(row_count($result_set3) == 0){
+    
+       echo  "No result uploaded for this user yet<br/><a href='#' onclick='goBack()';>Click here to go back</a>";
+    
+    } else {
+    
+    $sql4 = "SELECT sum(sn) AS altol FROM students WHERE `Class` = '$cls'";
+    $res1 = query($sql4);
+    $qw1  = mysqli_fetch_array($res1);
+    
+    $sql5 = "SELECT * FROM students WHERE `AdminID` = '$data'";
+    $res2 = query($sql5);
+    $qw2  = mysqli_fetch_array($res2);
+    ?>
 
 <!DOCTYPE html>
 <html>
@@ -165,17 +79,31 @@ $updlslq = query($updls);
 
 <body>
     <div class="text-center">
-        <h1><img style="width: 50px; height: 50px;" src="dist/img/logo.png"> <b><?php echo $call['school'] ?></b></h1>
-        <h6><b>Gov`t Approved</b></h6>
-        <h5><?php echo $call['addr'] ?></h5>
-        <h6><b>Tel.: <?php echo $call['tel'] ?> &nbsp; &nbsp; &nbsp; Website.: <?php echo $call['website'] ?> &nbsp;
+        <?php 
+        if($qw2['Department'] == 'Secondary School') {
+    
+            echo '
+            <h1><img style="width: 50px; height: 50px;" src="dist/img/logo.png"> <b>FIT-CHARIS COLLEGE</b></h1>
+            ';
+            } else {
+    
+            echo '
+            <h1><img style="width: 50px; height: 50px;" src="dist/img/logo.png"> <b>FIT-CHARIS INTERNATIONAL SCHOOL</b></h1>
+            ';
+            }
+            ?>
+        <h4><b>Government Approved</b></h4>
+        <h5>KM 10, Lasu Iba Road,
+            Afolabi B/Stop, Akesan, Iba-Lasu Exp/Way, Lagos. <br />No. 5/13 Alhaji Fausat Street, St. Mary Bus-Stop,
+            Governor Road, Ikotun, Lagos.</h5>
+        <h6><b>Tel.: <?php echo $call['tel'] ?> <br /> Website.: <?php echo $call['website'] ?> &nbsp;
                 &nbsp; &nbsp;
                 Email.:
-                <?php echo $call['emal'] ?></b></h6>
+                info@fitcharisschools.com</b></h6>
 
         <br />
 
-        <h3>STUDENT PROGRESS REPORT FOR <?php echo strtoupper($tms) ?></h3>
+        <h3>STUDENT ASSESSMENT REPORT FOR <?php echo strtoupper($cls) ?> - <?php echo strtoupper($tms) ?></h3>
         <br />
     </div>
 
@@ -186,8 +114,7 @@ $updlslq = query($updls);
             </h5>
             <h5 class="col-sm-6">Admission Number.: <b><?php echo $data ?></b></h5>
             <h5 class="col-sm-6">Class.: <b><?php echo $cls ?></b></h5>
-            <h5 class="col-sm-6">No on Roll.: <b><?php echo $qw1['altol'] ?></b></h5>
-            <h5 class="col-sm-6">Times Absent.: <b><?php echo $row3['tsa'] ?></b></h5>
+            <h5 class="col-sm-6">Academic Session.: <b><?php echo $ses ?></b></h5>
             <h5 class="col-sm-6">School Resumes.:
                 <b><?php echo date('l, F d, Y ', strtotime($row3['resm'])); ?></b>
             </h5>
@@ -197,401 +124,180 @@ $updlslq = query($updls);
     <br />
     <table class="table table-hover text-center table-bordered table-striped">
         <?php
-
-if($cls == 'Transition' || $cls == 'Reception' || $cls == 'Kindergarten' || $cls == 'Nursery 1') {
-
-            echo '
-
-            <tr>
-            <th>Subject</th>
-            <th width="90px">CAT 1 <br />(10)</th>
-            <th width="90px">CAT 2 <br />(10)</th>
-            <th>Exam Score<br>(80)</th>
-            <th>Total<br>(100)</th>';
-            
-            if($tms == '1st Term') {
-                echo '
-                <th>1st Term <br />Score</th>
-                '; 
-            } else {
-
-            if($tms == '2nd Term') {
-
-                echo '
-                <th>1st Term <br />Score</th>
-                <th>2nd Term <br />Score</th>
-                ';
-            } else {
-
-            if($tms == '3rd Term') {
-
-            echo '
-            <th>1st Term <br />Score</th>
-            
-            <th>2nd Term <br />Score</th>
-
-            ';
-            }
-            }
-            }
-            echo '
-            <th>Annual <br />Score</th>
-            <th>Grade</th>
-            <th>Remark</th>
-        </tr>
-
-            ';
-
-
-        } else {
-
-            echo '
-
-            <tr>
-            <th>Subject</th>
-            <th width="90px">CAT 1 <br />(10)</th>
-            <th width="90px">CAT 2 <br />(10)</th>
-            <th width="90px">CAT 3<br>(10)</th>
-            <th>Exam Score<br>(70)</th>
-            <th>Total<br>(100)</th>';
-           
-            if($tms == '1st Term') {
-                echo '
-                <th>1st Term <br />Score</th>
-                '; 
-            } else {
-
-            if($tms == '2nd Term') {
-
-                echo '
-                <th>1st Term <br />Score</th>
-                <th>2nd Term <br />Score</th>
-                ';
-            } else {
-
-            if($tms == '3rd Term') {
-
-            echo '
-            <th>1st Term <br />Score</th>
-            
-            <th>2nd Term <br />Score</th>
-
-            ';
-            }
-            }
-            }
-            echo '
-            <th>Cumulative Average <br />Score</th>
-            <th>Grade</th>
-            <th>Remark</th>
-        </tr>
-            
-            ';
-            
-            
-        }
-
-
-$sql= "SELECT * FROM `result` WHERE `admno` = '$data' AND `term` = '$tms' AND `ses` = '$ses'";
-$result_set=query($sql);
-if(row_count($result_set) == "") {
-            
-          } else {
-while($row= mysqli_fetch_array($result_set))
- {
-  $frd = $row['subject'];
-$sql2= "SELECT * FROM `score` WHERE `admno` = '$data' AND `subject` = '$frd' AND `ses` = '$ses'";
-$result_set2=query($sql2);
-$row2= mysqli_fetch_array($result_set2);
     
-    if($cls == 'Transition' || $cls == 'Reception' || $cls == 'Kindergarten' || $cls == 'Nursery 1') {
-
-        echo '
-
-        <tr>
-        <td>'.ucwords($row['subject']).'</td>
-        <td>'.$row['test'].'</td>
-        <td>'.$row['ass'].'</td>
-        <td>'.$row['exam'].'</td>
-        <td>'.$row['total'].'</td>';
-
-        if($tms == '1st Term') {
-
-            $tst = $row['total'];
-            $sbj = $row['subject'];
-
-            $annual = $row['total'];
-            
-            $sndsc = "UPDATE score SET `fscore` = '$tst' WHERE `admno` = '$data' AND `class` = '$cls' AND `subject` = '$sbj' AND `ses` = '$ses'";
-            $sndrl = query($sndsc);
-            
-            echo '
-            <td>'.$row2['fscore'].'</td>
-            <td>'.$annual.'</td>
-            '; 
-        } else {
-
-        if($tms == '2nd Term') {
-
-            $tst = $row['total'];
-            $sbj = $row['subject'];
-
-            
-            $sndsc = "UPDATE `score` SET `sndscore` = '$tst' WHERE `admno` = '$data' AND `class` = '$cls' AND `subject` = '$sbj' AND `ses` = '$ses'";
-            $sndrl = query($sndsc);
-
-            if($row2['fscore'] == null || $row2['fscore'] == ''){
-
-                $row2['fscore'] = 0;
-                $annual = $row['total'];
-                $row2['sndscore'] = $tst;
-
-            } else {
-
-                $annual = round(($row2['fscore'] + $row2['sndscore']) / 2, 1);
-            }
-
-
-            echo '
-            <td>'.$row2['fscore'].'</td>
-            <td>'.$row2['sndscore'].'</td>
-            <td>'.$annual.'</td>
-            ';
-        } else {
-
-        if($tms == '3rd Term') {
-
-            $tst = $row['total'];
-            $sbj = $row['subject'];
-            $fscore = $row2['fscore'];
-            $sndscore = $row2['sndscore'];
-
-            $sndsc = "UPDATE score SET `tscore` = '$tst' WHERE `admno` = '$data' AND `class` = '$cls' AND `subject` = '$sbj' AND `ses` = '$ses'";
-            $sndrl = query($sndsc);
-
-            if($row2['fscore'] == null ||  $row2['fscore'] == ''){
-
-                $row2['fscore'] = 0;
-                $annual = $row['total'];
-
-            } else {
-
-                if($row2['sndscore'] == null || $row2['sndscore'] == '') {
-
-                $row2['sndscore'] = 0;
-                $annual = $row['total'];
-                
+                echo '
+    
+                <tr>
+                <th>Subject</th>
+                <th width="90px">Classwork <br />(10)</th>
+                <th width="90px">Continuous
+                Assessment <br />(10)</th>
+                <th width="90px">Mid-Term Test<br>(10)</th>
+                <th width="90px">Project<br>(10)</th>
+                <th>Exam Score<br>(60)</th>
+                <th>Total<br>(100)</th>';
+               
+                if($tms == '1st Term') {
+                    echo '
+                    <th>1st Term <br />Score</th>
+                    '; 
                 } else {
-
-                    $annual = round(($row2['fscore'] + $row2['sndscore'] + $row2['tscore']) / 3, 1);
-                    
+    
+                if($tms == '2nd Term') {
+    
+                    echo '
+                    <th>1st Term <br />Score</th>
+                    <th>2nd Term <br />Score</th>
+                    ';
+                } else {
+    
+                if($tms == '3rd Term') {
+    
+                echo '
+                <th>1st Term <br />Score</th>
+                
+                <th>2nd Term <br />Score</th>
+    
+                ';
+                }
                 }
             }
-
-        echo '
-        <td>'.$row2['fscore'].'</td>
-        <td>'.$row2['sndscore'].'</td>
-        <td>'.$annual.'</td>
-
-        ';
-            
-        }
-        }
-        }
+                echo '
+                <th>Cumulative <br /> Average Score</th>
+                <th>Grade</th>
+                <th>Remark</th>
+            </tr>
+                
+                ';
+                
+                
+            }
+    
+    
+    $sql= "SELECT * FROM `result` WHERE `admno` = '$data' AND `term` = '$tms' AND `ses` = '$ses'";
+    $result_set=query($sql);
+    if(row_count($result_set) == "") {
+                
+              } else {
+    while($row= mysqli_fetch_array($result_set))
+     {
+      $frd = $row['subject'];
+    $sql2= "SELECT * FROM `score` WHERE `admno` = '$data' AND `subject` = '$frd' AND `ses` = '$ses'";
+    $result_set2=query($sql2);
+    $row2= mysqli_fetch_array($result_set2);
         
-        echo '
-        <td>'.$row['grade'].'</td>
-        <td>'.$row['remark'].'</td>
-        </tr>
-
-        ';
-
-        } else {
-
-        echo '
-
-        <tr>
-        <td>'.ucwords($row['subject']).'</td>
-        <td>'.$row['test'].'</td>
-        <td>'.$row['ass'].'</td>
-        <td>'.$row['classex'].'</td>
-        <td>'.$row['exam'].'</td>
-        <td>'.$row['total'].'</td>';
-        if($tms == '1st Term') {
-
-            $tst = $row['total'];
-            $sbj = $row['subject'];
-
-            $annual = $row['total'];
-            
-            $sndsc = "UPDATE score SET `fscore` = '$tst' WHERE `admno` = '$data' AND `class` = '$cls' AND `subject` = '$sbj' AND `ses` = '$ses'";
-            $sndrl = query($sndsc);
-            
+    
             echo '
-            <td>'.$row2['fscore'].'</td>
-            <td>'.$annual.'</td>
-            '; 
-        } else {
-
-        if($tms == '2nd Term') {
-
-            $tst = $row['total'];
-            $sbj = $row['subject'];
-
-            
-            $sndsc = "UPDATE `score` SET `sndscore` = '$tst' WHERE `admno` = '$data' AND `class` = '$cls' AND `subject` = '$sbj' AND `ses` = '$ses'";
-            $sndrl = query($sndsc);
-
-            if($row2['fscore'] == null || $row2['fscore'] == ''){
-
-                $row2['fscore'] = 0;
+    
+            <tr>
+            <td>'.ucwords($row['subject']).'</td>
+            <td>'.$row['classex'].'</td>
+            <td>'.$row['test'].'</td>
+            <td>'.$row['mid'].'</td>
+            <td>'.$row['ass'].'</td>
+            <td>'.$row['exam'].'</td>
+            <td>'.$row['total'].'</td>';
+            if($tms == '1st Term') {
+                
                 $annual = $row['total'];
-                $row2['sndscore'] = $tst;
-
+             
+                echo '
+                <td>'.$row2['fscore'].'</td>
+                <td>'.$annual.'</td>
+                '; 
             } else {
-
-                $annual = round(($row2['fscore'] + $row2['sndscore']) / 2, 1);
-            }
-
-
+    
+            if($tms == '2nd Term') {
+    
+               $annual = round(($row2['fscore'] + $row2['sndscore']) / 2, 0);
+    
+                echo '
+                <td>'.$row2['fscore'].'</td>
+                <td>'.$row2['sndscore'].'</td>
+                <td>'.$annual.'</td>
+                ';
+            } else {
+    
+            if($tms == '3rd Term') {
+    
+                $annual = round(($row2['fscore'] + $row2['sndscore'] + $row2['tscore']) / 3, 1);
+    
             echo '
             <td>'.$row2['fscore'].'</td>
             <td>'.$row2['sndscore'].'</td>
             <td>'.$annual.'</td>
+    
             ';
-        } else {
-
-        if($tms == '3rd Term') {
-
-            $tst = $row['total'];
-            $sbj = $row['subject'];
-            $fscore = $row2['fscore'];
-            $sndscore = $row2['sndscore'];
-
-            $sndsc = "UPDATE score SET `tscore` = '$tst' WHERE `admno` = '$data' AND `class` = '$cls' AND `subject` = '$sbj' AND `ses` = '$ses'";
-            $sndrl = query($sndsc);
-
-            if($row2['fscore'] == null ||  $row2['fscore'] == ''){
-
-                $row2['fscore'] = 0;
-                $annual = $row['total'];
-
-            } else {
-
-                if($row2['sndscore'] == null || $row2['sndscore'] == '') {
-
-                $row2['sndscore'] = 0;
-                $annual = $row['total'];
                 
-                } else {
-
-                    $annual = round(($row2['fscore'] + $row2['sndscore'] + $row2['tscore']) / 3, 1);
-                    
-                }
             }
-
-        echo '
-        <td>'.$row2['fscore'].'</td>
-        <td>'.$row2['sndscore'].'</td>
-        <td>'.$annual.'</td>
-
-        ';
-            
-        }
-        }
-        }
-        echo '
-        <td>'.$row['grade'].'</td>
-        <td>'.$row['remark'].'</td>
-        </tr>
-
-
-        ';
-        }
-
-
-        }
-        }
-        ?>
+            }
+            }
+            echo '
+            <td>'.$row['grade'].'</td>
+            <td>'.$row['remark'].'</td>
+            </tr>
+    
+    
+            ';
+            }
+    
+    
+            }
+            ?>
     </table>
 
     <table style="width: 100%;" class="table table-hover table-bordered table-striped">
 
         <tr>
-            <th class="text-center" colspan="2">Affective Domain</th>
-            <th class="text-center" colspan="2">Psychomotor</th>
+            <th class="text-center" colspan="4">Personal Development</th>
             <th class="text-center" colspan="2">Academic Performance Summary</th>
         </tr>
         <?php
-$sql2 = "SELECT * FROM `motor` WHERE `admno` = '$data' AND `term` = '$tms' AND `ses` = '$ses'";
-$result_set2 = query($sql2);
-$row2 = mysqli_fetch_array($result_set2);
-if(row_count($result_set2) == "") {
-    echo "<span style='color:red'>No records found</span>";        
-  } else {
-?>
+    $sql2 = "SELECT * FROM `motor` WHERE `admno` = '$data' AND `term` = '$tms' AND `ses` = '$ses'";
+    $result_set2 = query($sql2);
+    $row2 = mysqli_fetch_array($result_set2);
+    if(row_count($result_set2) == "") {
+        echo "<span style='color:red'>No records found</span>";        
+      } else {
+    ?>
 
         <tr>
-            <td>Carrying Out Assignment</td>
+            <td>Mental Alertness</td>
             <td><?php echo $row2['attendance'] ?></td>
-            <td>Obedience</td>
-            <td><?php echo $row2['sport'] ?></td>
-            <td><b>Mark Possible .:</b> &nbsp;&nbsp; <?php echo $mrkpos ?></td>
-            <td><b>Mark Obtained .:</b> &nbsp;&nbsp; <?php echo $mrkobt ?></td>
-        </tr>
-        <tr>
-            <td>Politeness</td>
+            <td>Physical development</td>
             <td><?php echo $row2['punctuality'] ?></td>
-            <td>Attitude to Work</td>
-            <td><?php echo $row2['societies'] ?></td>
-            <td colspan="2"><b>Percentage .:</b> &nbsp;&nbsp; <?php echo(round($perc,1)); ?>%</td>
+            <td><b>Mark Possible .:</b> &nbsp;&nbsp; <?php echo $row2['mrkpos'] ?></td>
+            <td><b>Mark Obtained .:</b> &nbsp;&nbsp; <?php echo $row2['mrkobt'] ?></td>
         </tr>
         <tr>
-            <td>Honesty</td>
+            <td>Adjustment in school</td>
             <td><?php echo $row2['honesty'] ?></td>
-            <td>Attentiveness in class</td>
-            <td><?php echo $row2['youth'] ?></td>
-            <td><b>Total Grade.:</b> &nbsp;&nbsp; <?php echo $grade ?></td>
-            <?php
-    if (isset($_SESSION['rep'])) {
-   $wed = $_SESSION['rep'];
-   echo '<td>'.$wed.'</td>';
-} else {
-    echo '<td></td>';
-}    
-?>
-        </tr>
-        <tr>
-            <td>Neatness</td>
+            <td>Relationship with teachers</td>
             <td><?php echo $row2['neatness'] ?></td>
-            <td>Co-operation</td>
-            <td><?php echo $row2['aesth'] ?></td>
-            <td colspan="2" rowspan="6"><b>Principal Comment.:</b> &nbsp;&nbsp;
-                <?php echo ucwords($row2['principal']) ?></td>
+            <td colspan="2"><b>Percentage .:</b> &nbsp;&nbsp; <?php echo $row2['perc'] ?>%</td>
         </tr>
         <tr>
-            <td>Self Control</td>
+            <td>Relationship with
+                students</td>
             <td><?php echo $row2['nonaggr'] ?></td>
-        </tr>
-        <tr>
-            <td>Organisational Ability</td>
+            <td>General attitude
+                and habit</td>
             <td><?php echo $row2['leader'] ?></td>
+            <td><b>Total Grade.:</b> &nbsp;&nbsp; <?php echo $row2['totgra'] ?></td>
         </tr>
         <tr>
-            <td>Relationship with others</td>
-            <td><?php echo $row2['relation'] ?></td>
+            <td colspan="4" rowspan="12"><b>Teacher's Comment.:</b> &nbsp;&nbsp;
+                <?php echo ucwords($row2['principal']) ?></td>
+            <td colspan="4" rowspan="12"><b>Principal Comment.:</b> &nbsp;&nbsp;
+                <?php echo ucwords($row2['tess']) ?></td>
         </tr>
+
     </table>
 
 </body>
 
-<script type="text/javascript">
-window.addEventListener("load", window.print());
-</script>
-
 </html>
 <?php
-}
 }
 }
 ?>

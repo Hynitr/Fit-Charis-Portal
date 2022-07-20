@@ -30,8 +30,8 @@ $row= mysqli_fetch_array($result_set);
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-12">
-                    <h1 class="m-0 text-dark">Edit Physical
-                        Development Report</h1>
+                    <h1 class="m-0 text-dark">Approve
+                        <?php echo $rower['SurName']." ".$rower['Middle Name']." ".$rower['Last Name'] ?> Result</h1>
                 </div><!-- /.col -->
 
             </div><!-- /.row -->
@@ -47,9 +47,10 @@ $row= mysqli_fetch_array($result_set);
             <!-- general form elements disabled -->
             <div class="card card-warning">
                 <div class="card-header">
-                    <h3 class="card-title">Edit Physical Development Result for <strong>
+                    <h3 class="card-title">Approve Result for <strong>
                             <?php echo $rower['SurName']." ".$rower['Middle Name']." ".$rower['Last Name'] ?></strong> -
-                        <?php echo $term ?> </h3>
+                        <?php echo $cls ?>
+                        <?php echo $term ?> <?php echo $ses ?></h3>
                     <div class="card-tools">
                         <button type="button" data-toggle="tooltip" title="Minimize" class="btn btn-tool"
                             data-card-widget="collapse"><i class="fas fa-minus"></i>
@@ -65,7 +66,7 @@ $row= mysqli_fetch_array($result_set);
 
                                 <div class="form-group">
                                     <div class="row">
-                                        <div class="form-group col-md-2">
+                                        <div class="form-group col-md-2" hidden>
                                             <label for="exampleInputEmail1">Mental alertness:</label>
 
                                             <input type="number" name="date" id="attd"
@@ -73,35 +74,35 @@ $row= mysqli_fetch_array($result_set);
                                                 class="form-control">
                                         </div>
                                         <!-- /.input group -->
-                                        <div class="form-group col-md-2">
+                                        <div class="form-group col-md-2" hidden>
                                             <label for="exampleInputEmail1">Physical development:</label>
                                             <input type="number" name="month" id="punc"
                                                 value="<?php echo $row['punctuality'] ?>"
                                                 placeholder="Physical development" class="form-control">
                                         </div>
                                         <!-- /.input group -->
-                                        <div class="form-group col-md-2">
+                                        <div class="form-group col-md-2" hidden>
                                             <label for="exampleInputEmail1">Adjustment in school:</label>
                                             <input type="number" name="year" id="hons"
                                                 value="<?php echo $row['honesty'] ?>" placeholder="Adjustment in school"
                                                 class="form-control">
                                         </div>
                                         <!-- /.input group -->
-                                        <div class="form-group col-md-2">
+                                        <div class="form-group col-md-2" hidden>
                                             <label for="exampleInputEmail1">Relationship with teachers:</label>
                                             <input type="number" name="year" id="neat"
                                                 value="<?php echo $row['neatness'] ?>"
                                                 placeholder="Relationship with teachers" class="form-control">
                                         </div>
                                         <!-- /.input group -->
-                                        <div class="form-group col-md-2">
+                                        <div class="form-group col-md-2" hidden>
                                             <label for="exampleInputEmail1">Relationship with students:</label>
                                             <input type="number" name="year" id="nonaggr"
                                                 value="<?php echo $row['nonaggr'] ?>"
                                                 placeholder="Relationship with students" class="form-control">
                                         </div>
                                         <!-- /.input group -->
-                                        <div class="form-group col-md-2">
+                                        <div class="form-group col-md-2" hidden>
                                             <label for="exampleInputEmail1">General attitude and habit:</label>
                                             <input type="number" name="year" id="ldsk"
                                                 value="<?php echo $row['leader'] ?>"
@@ -131,64 +132,37 @@ $pos  = mysqli_fetch_array($ress);
   $perc = 0;
   $grade = 0;
  } else {
+    
  $perc    = ($mrkobt/$mrkpos) * 100;
 
- if ($perc <= 39) {
+ if ($perc <= 44) {
     
-    $grade  = "Ninth Class";
+    $grade  = "5th Class";
    
      } else {
 
-  if ($perc <= 44) {
-    
-  $grade  = "Eighth Class";
-  
-  } else {
-
-  if ($perc <= 49) {
-
-  $grade  = "Seventh Class";
- 
-  } else {
-
   if ($perc <= 54) {
+    
+  $grade  = "4th Class";
   
-  $grade  = "Sixth Class";
-  
-  } else {
-
-  if ($perc <= 59) {
-  
-  $grade  = "Fifth Class";
- 
   } else {
 
   if ($perc <= 64) {
 
-  $grade  = "Fouth Class";
+  $grade  = "3rd Class";
  
   } else {
 
-  if ($perc <= 69) {
+  if ($perc <= 74) {
   
-  $grade  = "Third Class";
- 
-  } else {
-
-  if ($perc <= 89) {
+  $grade  = "2nd Class";
   
-  $grade  = "Second Class";
- 
   } else {
 
   if ($perc <= 100) {
-
-  $grade  = "First Class";
+  
+  $grade  = "1st Class";
  
-  }
-  }
-  }
-  }
   }
   }
   }
@@ -231,7 +205,7 @@ $pos  = mysqli_fetch_array($ress);
 
                             <label>Promoted to.:</label>
                             <select name="cls" id="cls" class="custom-select">
-                                <option name="cls" id="cls">'.$rower['Class'].'</option>
+                            <option name="cls" id="cls">'.$rower['Class'].'</option>
                                 <option name="cls" id="cls">Reception</option>
                                 <option name="cls" id="cls">Transition</option>
                                 <option name="cls" id="cls">Kindergarten</option>
@@ -458,6 +432,12 @@ $pos  = mysqli_fetch_array($ress);
 
                         </div>
 
+
+                        <div class="form-group col-md-12">
+                            <label for="exampleInputEmail1">Principal Comment</label>
+                            <input type="text" name="text" id="tess" placeholder="" class="form-control">
+                        </div>
+
                         <div class="form-group">
                             <input type="text" class="form-control" value="<?php echo $data; ?>" id="admis" hidden>
                             <input type="text" class="form-control"
@@ -471,8 +451,7 @@ $pos  = mysqli_fetch_array($ress);
                         <p class="text-danger">Recheck all details typed in before submitting</p>
 
                         <button type="button" id="eddsubdone"
-                            class="btn float-right btn-primary btn-outline-light">Submit
-                            Result</button>
+                            class="btn float-right btn-primary btn-outline-light">Approve Result</button>
 
                     </form>
                 </div>
