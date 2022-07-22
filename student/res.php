@@ -8,6 +8,8 @@ include("functions/init.php");
 if(!isset($_GET['id']) && !isset($_GET['term']) && !isset($_GET['cls']) && !isset($_GET['ses'])) {
 
 echo "Error 404!";
+
+die();
 } else {
 
 

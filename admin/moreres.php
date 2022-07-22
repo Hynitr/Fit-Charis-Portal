@@ -8,6 +8,7 @@ include("functions/init.php");
 if(!isset($_GET['id']) && !isset($_GET['term']) && !isset($_GET['cls']) && !isset($_GET['ses'])) {
 
 echo "Error 404!";
+die();
 } else {
 
     $data =  $_GET['id'];
@@ -22,7 +23,7 @@ echo "Error 404!";
     if(row_count($result_set3) == 0){
     
        echo  "No result uploaded for this user yet<br/><a href='#' onclick='goBack()';>Click here to go back</a>";
-    
+        die();
     } else {
     
     $sql4 = "SELECT sum(sn) AS altol FROM students WHERE `Class` = '$cls'";
