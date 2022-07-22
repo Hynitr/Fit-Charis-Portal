@@ -206,23 +206,21 @@ $pos  = mysqli_fetch_array($ress);
                             <label>Promoted to.:</label>
                             <select name="cls" id="cls" class="custom-select">
                             <option name="cls" id="cls">'.$rower['Class'].'</option>
-                                <option name="cls" id="cls">Reception</option>
-                                <option name="cls" id="cls">Transition</option>
-                                <option name="cls" id="cls">Kindergarten</option>
-                                <option name="cls" id="cls">Nursery 1</option>
-                                <option name="cls" id="cls">Nursery 2</option>
-                                <option name="cls" id="cls">Grade 1</option>
-                                <option name="cls" id="cls">Grade 2</option>
-                                <option name="cls" id="cls">Grade 3</option>
-                                <option name="cls" id="cls">Grade 4</option>
-                                <option name="cls" id="cls">Grade 5</option>
-                                <option name="cls" id="cls">Grade 6</option>
-                                <option name="cls" id="cls">J.S.S 1</option>
-                                <option name="cls" id="cls">J.S.S 2</option>
-                                <option name="cls" id="cls">J.S.S 3</option>
-                                <option name="cls" id="cls">S.S.S 1</option>
-                                <option name="cls" id="cls">S.S.S 2</option>
-                                <option name="cls" id="cls">S.S.S 3</option>
+                            <option name="cls" id="cls">Nursery 1</option>
+                            <option name="cls" id="cls">Nursery 2</option>
+                            <option name="cls" id="cls">KG 1</option>
+                            <option name="cls" id="cls">KG 2</option>
+                            <option name="cls" id="cls">Year 1</option>
+                            <option name="cls" id="cls">Year 2</option>
+                            <option name="cls" id="cls">Year 3</option>
+                            <option name="cls" id="cls">Year 4</option>
+                            <option name="cls" id="cls">Year 5</option>
+                            <option name="cls" id="cls">J.S.S 1</option>
+                            <option name="cls" id="cls">J.S.S 2</option>
+                            <option name="cls" id="cls">J.S.S 3</option>
+                            <option name="cls" id="cls">S.S.S 1</option>
+                            <option name="cls" id="cls">S.S.S 2</option>
+                            <option name="cls" id="cls">S.S.S 3</option>
                                 </select>
 
                                 <br /><br />
