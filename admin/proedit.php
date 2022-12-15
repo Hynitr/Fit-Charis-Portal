@@ -150,11 +150,10 @@ if (!isset($_GET['id'])) {
                                     <select name="class" id="class" value="<?php echo $row['Class'] ?>"
                                         class="custom-select">
                                         <option name="class" id="class"><?php echo $row['Class'] ?></option>
-                                        <option name="class" id="class">Reception</option>
-                                        <option name="class" id="class">Transition</option>
-                                        <option name="class" id="class">Kindergarten</option>
                                         <option name="class" id="class">Nursery 1</option>
                                         <option name="class" id="class">Nursery 2</option>
+                                        <option name="class" id="class">KG 1</option>
+                                        <option name="class" id="class">KG 2</option>
                                         <option name="class" id="class">Year 1</option>
                                         <option name="class" id="class">Year 2</option>
                                         <option name="class" id="class">Year 3</option>
