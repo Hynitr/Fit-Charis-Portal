@@ -155,11 +155,11 @@ if (!isset($_GET['id'])) {
                                         <option name="class" id="class">Kindergarten</option>
                                         <option name="class" id="class">Nursery 1</option>
                                         <option name="class" id="class">Nursery 2</option>
-                                        <option name="class" id="class">Grade 1</option>
-                                        <option name="class" id="class">Grade 2</option>
-                                        <option name="class" id="class">Grade 3</option>
-                                        <option name="class" id="class">Grade 4</option>
-                                        <option name="class" id="class">Grade 5</option>
+                                        <option name="class" id="class">Year 1</option>
+                                        <option name="class" id="class">Year 2</option>
+                                        <option name="class" id="class">Year 3</option>
+                                        <option name="class" id="class">Year 4</option>
+                                        <option name="class" id="class">Year 5</option>
                                         <option name="class" id="class">J.S.S 1</option>
                                         <option name="class" id="class">J.S.S 2</option>
                                         <option name="class" id="class">J.S.S 3</option>
